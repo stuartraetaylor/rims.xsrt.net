@@ -1,19 +1,19 @@
 #offset-calculator {
-	width: 600px;
-	padding: 5px;
+  width: 600px;
+  padding: 5px;
   margin-bottom: 20px;
-	border: 2px solid #E9E9E9;
+  border: 2px solid #E9E9E9;
   background: #f9f9f9;
   color: #333;
 }
 
 #offset-calculator h3 {
-	margin: 0 0 16px 0;
-	padding: 0 2px;
-	font-size: 11pt;
+  margin: 0 0 16px 0;
+  padding: 0 2px;
+  font-size: 11pt;
   font-weight: bold;
-	background: #E9E9E9;
-	color: #333;
+  background: #E9E9E9;
+  color: #333;
 }
 
 #offset-calculator h4 { 
@@ -24,7 +24,7 @@
  }
 
 #offset-calculator label {
-	font-weight: bold;
+  font-weight: bold;
   color: #333;
 }
 
@@ -42,11 +42,11 @@
   float: right;
   margin-right: 16px;
   text-align: right;
-	padding: 4px;
-	border: 1px solid #fff;
+  padding: 4px;
+  border: 1px solid #fff;
   color: #000;
   line-height: 14px;
-	-moz-border-radius: 4px;
+  -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
   -moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
@@ -74,10 +74,9 @@
 #offset-calculator-result tr td {
   min-width: 100px;
   font-family: Lucida Console, monospace;
-	white-space: pre;
+  white-space: pre;
   font-size: 14px;
 }
 #comparison table td { min-width: 48px; padding: 0; text-align: right; }
 #comparisonSlider { margin: 12px 20px 0 20px; }
 .demos { float: left; width: 250px; }
-

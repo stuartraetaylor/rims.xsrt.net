@@ -135,8 +135,8 @@ function OffsetCalculator() {
       return;
     
     var calculator = this;
-	  $j('#comparisonSlider').slider({
-		  min: 5, max: 11, step: 0.5,
+    $j('#comparisonSlider').slider({
+  	  min: 5, max: 11, step: 0.5,
       disabled: false,
       value: comparisonState.minWidth,
       stop: function(e,ui) { 
@@ -437,4 +437,3 @@ function OffsetCalculator() {
     this.scrollTo("#offset-calculator");
   });
 }
-
