@@ -1,0 +1,83 @@
+#offset-calculator {
+	width: 600px;
+	padding: 5px;
+  margin-bottom: 20px;
+	border: 2px solid #E9E9E9;
+  background: #f9f9f9;
+  color: #333;
+}
+
+#offset-calculator h3 {
+	margin: 0 0 16px 0;
+	padding: 0 2px;
+	font-size: 11pt;
+  font-weight: bold;
+	background: #E9E9E9;
+	color: #333;
+}
+
+#offset-calculator h4 { 
+  margin-bottom: 3px;
+  font-size: 12px; 
+  font-weight: bold;
+  text-align: center;
+ }
+
+#offset-calculator label {
+	font-weight: bold;
+  color: #333;
+}
+
+#offset-calculator label em { text-transform: uppercase; font-style: normal; }
+
+#offset-calculator input {
+  margin: 0;
+  font-family: Tahoma, sans-serif;
+  color: #333;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+#offset-calculator input[type="text"] {
+  float: right;
+  margin-right: 16px;
+  text-align: right;
+	padding: 4px;
+	border: 1px solid #fff;
+  color: #000;
+  line-height: 14px;
+	-moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+  -moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+#offset-calculator .field-group { clear: both; }
+#offset-calculator .field { float: left; width: 50%; height: 2.5em; }
+#offset-calculator .controls { clear: both; padding: 18px 0 24px 0; text-align: center; }
+
+#offset-calculator .unit { font-size: 12px; font-weight: normal; }
+#resource-links { clear: both; min-height: 40px; text-align: right; font-size: 9pt; }
+#resource-links .link { display: block; }
+
+#comparison table,
+#content table#offset-calculator-result { border: 0px; clear: both; }
+
+#comparison { margin: 18px 6px 0 0; min-height: 100px; }
+
+#offset-calculator th { text-align: left; }
+#comparison tr th,
+#offset-calculator-result tr th { color: #333; }
+
+#comparison tr td,
+#offset-calculator-result tr td {
+  min-width: 100px;
+  font-family: Lucida Console, monospace;
+	white-space: pre;
+  font-size: 14px;
+}
+#comparison table td { min-width: 48px; padding: 0; text-align: right; }
+#comparisonSlider { margin: 12px 20px 0 20px; }
+.demos { float: left; width: 250px; }
+

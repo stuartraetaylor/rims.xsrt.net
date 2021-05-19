@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Wheel Fitment Comparison Calculator | Wheel offset and fitment comparison tools</title>
+
+<script type="text/javascript" src="/scripts/jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery-ui-1.10.0.custom.min.js"></script>
+
+<script type="text/javascript" src="/scripts/garagelsd.js?ver=1.2.1"></script>
+<script type="text/javascript" src="/scripts/garagelsd.offset.js?ver=2.1.6"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37651946-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<script type="text/javascript">
+	$j(function() {
+    $j("#share-dialog").dialog({
+      width: 480,
+      height: 140,
+      modal: true,
+      autoOpen: false
+    });
+	});
+  $j("#share-dialog").position({
+   my: "center",
+   at: "center",
+   of: window
+});
+</script>
+
+<link rel="stylesheet" type="text/css" media="all" href="/style/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/style/garagelsd-style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/scripts/style.offset.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/scripts/jquery/ui-lightness/jquery-ui-1.10.0.custom.min.css" />
+<style type="text/css">
+  #nav-fitment a:link { text-decoration: underline; }
+  .ui-dialog .ui-dialog-titlebar { height: 40px; }
+</style>
+</head>
+
+<body>
+<div id="navigation">
+  <ul class="container clearfix">
+    <li id="nav-equivalents"><a href="/tools/equivalents">Equivalent Arch Clearance Calculator</a></li>
+    <li id="nav-fitment"><a href="/tools/fitment">Wheel Fitment Comparison Calculator</a></li>
+    <li id="nav-offset"><a href="/tools/offset">Split Rim Offset Calculator</a></li>
+  </ul>
+</div>
+
+<div id="content" class="entry-content container">
+  <h1>Wheel Fitment Comparison Calculator</h1>
+<div id="offset-calculator" class="alignleft">
+<h3>Wheel Details (old vs. new)</h3>
+<form onsubmit="calculator.calculateFitment(this); trackEvent('Wheel Tools', 'wheel-fitment', calculator.results); return false;" onreset="calculator.clearall();">
+<div class="field-group">
+<div class="field">
+  <label for="wheelWidth" style="color: #C00;">Old wheel <em>width</em></label> 
+  <span class="unit">(<abbr title="inches">in.</abbr>)</span>
+  <input type="text" id="wheelWidth" name="wheelWidth" size="4" style="background: #FFE4B5;" />
+</div>
+<div class="field">
+  <label for="offset" style="color: #C00;">Old wheel <em>offset</em></label>
+  <span class="unit">(<abbr title="millimetres">mm</abbr>)</span> 
+  <input type="text" id="offset" name="offset" size="4" style="background: #FFE4B5;" />
+</div>
+</div>
+<div class="field-group">
+<div class="field">
+  <label for="newWheelWidth" style="color: #060;">New wheel <em>width</em></label> 
+  <span class="unit">(<abbr title="inches">in.</abbr>)</span>
+  <input type="text" id="newWheelWidth" name="newWheelWidth" size="4" style="background: #FFE4B5;" />
+</div>
+</div>
+<div class="field">
+  <label for="newOffset" style="color: #060;">New wheel <em>offset</em></label>
+  <span class="unit">(<abbr title="millimetres">mm</abbr>)</span> 
+  <input type="text" id="newOffset" name="newOffset" size="4" style="background: #FFE4B5;" />
+</div>
+<div class="field-group">
+<div class="field">
+  <label for="diameter">Wheel diameter</label> 
+  <span class="unit">(<abbr title="inches">in.</abbr>)</span>
+  <input type="text" id="diameter" name="diameter" size="4" style="background: #F0F0F0;" />
+</div>
+<div class="field">
+  <label for="spacers">Spacers</label> 
+  <span class="unit">(<abbr title="millimetres">mm</abbr>)</span>
+  <input type="text" id="spacers" name="spacers" size="4" value="0" style="background: #F0F0F0;" />
+</div>
+</div>
+<div class="controls">
+  <input type="submit" class="button" value="Calculate" />&nbsp; 
+  <input type="reset"  class="button" value="Reset" />&nbsp; 
+  <!--<input type="button" class="button" value="Share Results" onclick="calculator.share(this);" />-->
+</div>
+</form>
+
+<table id="offset-calculator-result" class="results">
+<tr><th></th><th>Old</th><th>New</th></tr>
+<tr><th>Wheel Width <span class="unit">(<abbr title="inches">in.</abbr>)</span></th>
+<td id="old-width">-</td><td id="new-width">-</td></tr>
+<tr><th>Wheel Offset <span class="unit">(<abbr title="millimetres">mm</abbr>)</span></th>
+<td id="old-offset">-</td><td id="new-offset">-</td></tr>
+<tr><th>Overall Offset <span class="unit">(<abbr title="millimetres">mm</abbr>)</span></th>
+<td>-</td><td id="overall-offset">-</td></tr>
+<tr><th>Arch clearance <span class="unit">(<abbr title="millimetres">mm</abbr>)</span></th>
+<td>-</td><td id="arch-diff">-</td></tr>
+<tr><th>Strut clearance <span class="unit">(<abbr title="millimetres">mm</abbr>)</span></th>
+<td>-</td><td id="strut-diff">-</td></tr>
+</table>
+
+<div id="comparison" class="results"></div>
+<div id="resource-links" class="results"></div>
+</div>
+  <div id="description">
+<h2>About the Wheel Fitment Calculator</h2>
+<p><img src="/images/wheel.jpg" width="300" alt="Wheel Calculator" /></p>
+<p>The wheel fitment calculator allows you to compare the arch and strut clearance of two different wheels.</p>
+<p>The calculator also provides a comparison of the new wheel against other wheel sizes with the same arch clearance.</p>
+<p>For example, you can see that a 9.5J et12 wheel has 37mm less arch clearance than an 8J et30 wheel; which is equivalent to having an 8J et-7 or 11J et31 wheel.</p>
+<p><a href="javascript:calculator.demo('wheel-fitment', 0);">Click for a demo!</a></p>
+  </div>
+</div>
+
+<div id="share-dialog" title="Copy the URL to share your results">
+</div>
+
+</body>
+</html>
