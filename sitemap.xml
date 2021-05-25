@@ -5,15 +5,15 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://rims.xsrt.net/offset</loc>
+    <loc>https://rims.xsrt.net/tools/offset</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://rims.xsrt.net/fitment</loc>
+    <loc>https://rims.xsrt.net/tools/fitment</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://rims.xsrt.net/equivalents</loc>
+    <loc>https://rims.xsrt.net/tools/equivalents</loc>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>
