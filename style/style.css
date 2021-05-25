@@ -1,10 +1,50 @@
 body { margin: 0px; }
+body, input {
+  font-family: Georgia, "Bitstream Charter", serif;
+  font-size: 12px;
+  line-height: 18px;
+}
 .container {
   width: 960px;
   margin: 0 auto;
 }
 #content {
   padding-top: 40px;
+  line-height: 20px;
+}
+#content p,
+#content ul {
+	margin-bottom:24px;
+}
+#content table {
+	border: 1px solid #e7e7e7;
+	text-align: left;
+	margin: 0 -1px 24px 0;
+	width: 100%;
+}
+#content tr th,
+#content thead th {
+  font-size: 12px;
+	font-weight: bold;
+	line-height: 18px;
+	padding: 9px 24px;
+}
+#content tr td {
+	border-top: 1px solid #e7e7e7;
+	padding: 6px 24px;
+}
+#content img {
+	margin: 0;
+	max-width: 620px;
+	border:5px solid #fff;
+}
+#content .alignleft,
+#content img.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 24px;
+	margin-top: 4px;
+	box-shadow: 3px 6px 8px 1px rgba(0, 0, 0, 0.3); -moz-box-shadow:3px 6px 8px 1px rgba(0, 0, 0, 0.3); -webkit-box-shadow: 3px 6px 8px 1px rgba(0, 0, 0, 0.3);
 }
 #description {
   float: left;
