@@ -1,7 +1,3 @@
-/*
- * Scripts for Garage LSD blog content
- */
-
 $j=jQuery.noConflict();
 jQuery.fn.reset = function () { $j(this).each (function() { this.reset(); }); }
 
