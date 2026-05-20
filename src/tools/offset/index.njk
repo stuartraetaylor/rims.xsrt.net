@@ -4,10 +4,10 @@ title: Split Rim Offset Calculator
 navActive: offset
 ---
 <!-- Mobile tab bar -->
-<div class="mobile-tabs flex lg:hidden border-b border-[var(--color-calc-border)] mb-4">
-  <button class="mobile-tab flex-1 py-2.5 px-2 text-sm font-bold text-center min-h-[44px] border-b-2 border-[var(--color-nav-link)] text-[var(--color-text-dark)]" data-tab="tab-calculator">Calculator</button>
-  <button class="mobile-tab flex-1 py-2.5 px-2 text-sm font-bold text-center min-h-[44px] border-b-2 border-transparent text-gray-400" data-tab="tab-results">Results</button>
-  <button class="mobile-tab flex-1 py-2.5 px-2 text-sm font-bold text-center min-h-[44px] border-b-2 border-transparent text-gray-400" data-tab="tab-about">About</button>
+<div class="tab-bar">
+  <button class="mobile-tab tab-btn tab-btn-active" data-tab="tab-calculator">Calculator</button>
+  <button class="mobile-tab tab-btn" data-tab="tab-results">Results</button>
+  <button class="mobile-tab tab-btn" data-tab="tab-about">About</button>
 </div>
 
 <div class="flex flex-col lg:flex-row gap-6">
@@ -15,47 +15,47 @@ navActive: offset
 
 <!-- Tab: Calculator -->
 <div class="tab-panel" id="tab-calculator">
-<div id="offset-calculator" class="bg-[var(--color-calc-bg)] border-2 border-[var(--color-calc-border)] p-4 rounded-lg shadow-sm mb-6 w-full max-w-[620px]">
-<h3 class="text-base font-bold bg-[var(--color-calc-heading)] text-[var(--color-text-dark)] px-2 py-1 -mx-4 -mt-4 mb-4 rounded-t-md">Wheel Details (3-piece wheel / split rim)</h3>
+<div id="offset-calculator" class="calc-card">
+<h3 class="calc-heading">Wheel Details (3-piece wheel / split rim)</h3>
 <form onsubmit="calculator.calculate(this); return false;" onreset="calculator.clearall();">
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
-  <div class="flex items-center gap-2">
-    <label for="oldOuter" class="font-bold text-[#C00] whitespace-nowrap">Original <em class="uppercase not-italic">outer</em> lip width</label>
-    <span class="text-xs text-gray-500">(<abbr title="inches">in.</abbr>)</span>
-    <input type="text" id="oldOuter" name="oldOuter" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FCD116] md:py-0.5" />
+  <div class="calc-field">
+    <label for="oldOuter" class="calc-label-old">Original <em class="uppercase not-italic">outer</em> lip width</label>
+    <span class="calc-unit">(<abbr title="inches">in.</abbr>)</span>
+    <input type="text" id="oldOuter" name="oldOuter" size="4" class="calc-input bg-[#FCD116]" />
   </div>
-  <div class="flex items-center gap-2">
-    <label for="newOuter" class="font-bold text-[#060] whitespace-nowrap">New <em class="uppercase not-italic">outer</em> lip width</label>
-    <span class="text-xs text-gray-500">(<abbr title="inches">in.</abbr>)</span>
-    <input type="text" id="newOuter" name="newOuter" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FCD116] md:py-0.5" />
+  <div class="calc-field">
+    <label for="newOuter" class="calc-label-new">New <em class="uppercase not-italic">outer</em> lip width</label>
+    <span class="calc-unit">(<abbr title="inches">in.</abbr>)</span>
+    <input type="text" id="newOuter" name="newOuter" size="4" class="calc-input bg-[#FCD116]" />
   </div>
-  <div class="flex items-center gap-2">
-    <label for="oldInner" class="font-bold text-[#C00] whitespace-nowrap">Original <em class="uppercase not-italic">inner</em> barrel width</label>
-    <span class="text-xs text-gray-500">(<abbr title="inches">in.</abbr>)</span>
-    <input type="text" id="oldInner" name="oldInner" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FF8C00] md:py-0.5" />
+  <div class="calc-field">
+    <label for="oldInner" class="calc-label-old">Original <em class="uppercase not-italic">inner</em> barrel width</label>
+    <span class="calc-unit">(<abbr title="inches">in.</abbr>)</span>
+    <input type="text" id="oldInner" name="oldInner" size="4" class="calc-input bg-[#FF8C00]" />
   </div>
-  <div class="flex items-center gap-2">
-    <label for="newInner" class="font-bold text-[#060] whitespace-nowrap">New <em class="uppercase not-italic">inner</em> barrel width</label>
-    <span class="text-xs text-gray-500">(<abbr title="inches">in.</abbr>)</span>
-    <input type="text" id="newInner" name="newInner" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FF8C00] md:py-0.5" />
+  <div class="calc-field">
+    <label for="newInner" class="calc-label-new">New <em class="uppercase not-italic">inner</em> barrel width</label>
+    <span class="calc-unit">(<abbr title="inches">in.</abbr>)</span>
+    <input type="text" id="newInner" name="newInner" size="4" class="calc-input bg-[#FF8C00]" />
   </div>
-  <div class="flex items-center gap-2">
-    <label for="wheelWidth" class="font-bold whitespace-nowrap">Original wheel width</label>
-    <span class="text-xs text-gray-500">(<abbr title="inches">in.</abbr>)</span>
-    <input type="text" id="wheelWidth" name="wheelWidth" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FFE4B5] md:py-0.5" />
+  <div class="calc-field">
+    <label for="wheelWidth" class="calc-label">Original wheel width</label>
+    <span class="calc-unit">(<abbr title="inches">in.</abbr>)</span>
+    <input type="text" id="wheelWidth" name="wheelWidth" size="4" class="calc-input bg-[#FFE4B5]" />
   </div>
-  <div class="flex items-center gap-2">
-    <label for="offset" class="font-bold whitespace-nowrap">Original wheel offset</label>
-    <span class="text-xs text-gray-500">(<abbr title="millimetres">mm</abbr>)</span>
-    <input type="text" id="offset" name="offset" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FFE4B5] md:py-0.5" />
+  <div class="calc-field">
+    <label for="offset" class="calc-label">Original wheel offset</label>
+    <span class="calc-unit">(<abbr title="millimetres">mm</abbr>)</span>
+    <input type="text" id="offset" name="offset" size="4" class="calc-input bg-[#FFE4B5]" />
   </div>
-  <div class="flex items-center gap-2">
-    <label for="spacers" class="font-bold whitespace-nowrap">Spacers</label>
-    <span class="text-xs text-gray-500">(<abbr title="millimetres">mm</abbr>)</span>
-    <input type="text" id="spacers" name="spacers" size="4" value="0" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FFE4B5] md:py-0.5" />
+  <div class="calc-field">
+    <label for="spacers" class="calc-label">Spacers</label>
+    <span class="calc-unit">(<abbr title="millimetres">mm</abbr>)</span>
+    <input type="text" id="spacers" name="spacers" size="4" value="0" class="calc-input bg-[#FFE4B5]" />
   </div>
 </div>
-<div class="text-center py-4">
+<div class="calc-controls">
   <input type="submit" class="button" value="Calculate" />&nbsp;
   <input type="reset" class="button" value="Reset" />
 </div>
@@ -87,16 +87,16 @@ navActive: offset
 
 <!-- Tab: About -->
 <div class="tab-panel hidden lg:block" id="tab-about">
-<div id="description" class="lg:flex-1 min-w-0 text-[var(--color-text-dark)] text-base leading-relaxed">
-<h2 class="text-lg font-bold mb-3">About the Split Rim Offset Calculator</h2>
+<div id="description" class="about-panel">
+<h2 class="about-heading">About the Split Rim Offset Calculator</h2>
 <p><img src="/images/split-rim.jpg" width="300" alt="Split Rim (3-piece wheel)" class="rounded shadow-md mb-4" /></p>
 <p class="mb-4">
   The split rim offset calculator allows you to calculate the new width and offset of your 3-piece (split rim)
   wheels when you change the inner barrel and/or outer lip.</p>
 <p class="mb-4">Here are some examples that will automatically complete the calculator form to help you get started:</p>
 <ul class="list-disc ml-5 mb-4">
-  <li><a href="javascript:switchTab('tab-calculator'); calculator.demo('split-rim', 1);" class="text-[var(--color-link)] hover:text-[var(--color-link-hover)] underline">Adding a larger outer lip to an 8J et32 wheel.</a></li>
-  <li><a href="javascript:switchTab('tab-calculator'); calculator.demo('split-rim', 2);" class="text-[var(--color-link)] hover:text-[var(--color-link-hover)] underline">Changing both inner and outer sections of a 10J et45 wheel.</a></li>
+  <li><a href="javascript:switchTab('tab-calculator'); calculator.demo('split-rim', 1);" class="about-link">Adding a larger outer lip to an 8J et32 wheel.</a></li>
+  <li><a href="javascript:switchTab('tab-calculator'); calculator.demo('split-rim', 2);" class="about-link">Changing both inner and outer sections of a 10J et45 wheel.</a></li>
 </ul>
 <p class="text-xs text-gray-500">* Note that you do not have to fill in all the fields for the calculator to give you a result.</p>
 </div>

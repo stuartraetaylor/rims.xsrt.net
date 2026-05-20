@@ -57,4 +57,61 @@
       min-height: 44px;
     }
   }
+
+  /* Calculator card */
+  .calc-card {
+    @apply bg-[var(--color-calc-bg)] border-2 border-[var(--color-calc-border)]
+           p-4 rounded-lg shadow-sm mb-6 w-full max-w-[620px];
+  }
+  .calc-heading {
+    @apply text-base font-bold bg-[var(--color-calc-heading)] text-[var(--color-text-dark)]
+           px-2 py-1 -mx-4 -mt-4 mb-4 rounded-t-md;
+  }
+
+  /* Form fields */
+  .calc-field {
+    @apply flex items-center gap-2;
+  }
+  .calc-input {
+    @apply ml-auto w-16 px-2 py-1 text-right rounded
+           border border-gray-300 shadow-inner text-sm md:py-0.5;
+  }
+  .calc-unit {
+    @apply text-xs text-gray-500;
+  }
+  .calc-label {
+    @apply font-bold whitespace-nowrap;
+  }
+  .calc-label-old {
+    @apply font-bold whitespace-nowrap text-[#C00];
+  }
+  .calc-label-new {
+    @apply font-bold whitespace-nowrap text-[#060];
+  }
+  .calc-controls {
+    @apply text-center py-4;
+  }
+
+  /* Description / About panel */
+  .about-panel {
+    @apply lg:flex-1 min-w-0 text-[var(--color-text-dark)] text-base leading-relaxed;
+  }
+  .about-heading {
+    @apply text-lg font-bold mb-3;
+  }
+  .about-link {
+    @apply text-[var(--color-link)] hover:text-[var(--color-link-hover)] underline;
+  }
+
+  /* Mobile tabs */
+  .tab-bar {
+    @apply flex lg:hidden border-b border-[var(--color-calc-border)] mb-4;
+  }
+  .tab-btn {
+    @apply flex-1 py-2.5 px-2 text-sm font-bold text-center
+           min-h-[44px] border-b-2 border-transparent text-gray-400;
+  }
+  .tab-btn-active {
+    @apply border-[var(--color-nav-link)] text-[var(--color-text-dark)];
+  }
 }

@@ -81,10 +81,7 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
     activeTab = targetId;
     tabs.forEach(function(t) {
       var isActive = t.getAttribute('data-tab') === targetId;
-      t.classList.toggle('border-[var(--color-nav-link)]', isActive);
-      t.classList.toggle('text-[var(--color-text-dark)]', isActive);
-      t.classList.toggle('border-transparent', !isActive);
-      t.classList.toggle('text-gray-400', !isActive);
+      t.classList.toggle('tab-btn-active', isActive);
     });
     applyLayout();
   }
