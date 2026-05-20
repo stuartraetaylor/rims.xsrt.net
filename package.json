@@ -4,7 +4,8 @@
   "description": "Website: https://rims.xsrt.net/",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy",
+    "build": "eleventy && tailwindcss -i src/style/main.css -o _site/style/main.css --minify",
+    "build:css": "tailwindcss -i src/style/main.css -o _site/style/main.css",
     "dev": "eleventy --serve"
   },
   "repository": {
@@ -19,6 +20,8 @@
   },
   "homepage": "https://github.com/stuartraetaylor/rims.xsrt.net#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.5"
+    "@11ty/eleventy": "^3.1.5",
+    "@tailwindcss/cli": "^4.3.0",
+    "tailwindcss": "^4.3.0"
   }
 }

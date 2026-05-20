@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@source "../**/*.njk";
+@source "../**/*.html";
+
+@theme {
+  /* Existing colour palette */
+  --color-page-bg: #f1f1f1;
+  --color-nav-bg: #111111;
+  --color-nav-link: #a68503;
+  --color-text: #444444;
+  --color-text-dark: #333333;
+  --color-link: #7D6402;
+  --color-link-hover: #333333;
+  --color-calc-bg: #f9f9f9;
+  --color-calc-border: #E9E9E9;
+  --color-calc-heading: #E9E9E9;
+  --color-table-border: #e7e7e7;
+  --color-btn-border: #999999;
+  --color-input-cream: #FFFFCC;
+  --color-input-grey: #E8E8E8;
+}
