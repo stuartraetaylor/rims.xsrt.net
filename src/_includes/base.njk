@@ -5,6 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ title }}{% if title %} | {% endif %}Wheel offset and fitment comparison tools</title>
 
+{% if description %}
+<meta name="description" content="{{ description }}" />
+{% else %}
+<meta name="description" content="Free online wheel offset and fitment comparison calculators. Calculate split rim offsets, compare wheel fitment, and find equivalent arch clearance." />
+{% endif %}
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://rims.xsrt.net{{ page.url }}" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RIMS — Wheel Offset & Fitment Tools" />
+<meta property="og:title" content="{{ title }}{% if title %} | {% endif %}Wheel offset and fitment comparison tools" />
+<meta property="og:url" content="https://rims.xsrt.net{{ page.url }}" />
+{% if description %}
+<meta property="og:description" content="{{ description }}" />
+{% else %}
+<meta property="og:description" content="Free online wheel offset and fitment comparison calculators. Calculate split rim offsets, compare wheel fitment, and find equivalent arch clearance." />
+{% endif %}
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{{ title }}{% if title %} | {% endif %}Wheel offset and fitment comparison tools" />
+{% if description %}
+<meta name="twitter:description" content="{{ description }}" />
+{% endif %}
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "{{ title | default('Wheel Offset & Fitment Tools') }}",
+  "url": "https://rims.xsrt.net{{ page.url }}",
+  {% if description %}"description": "{{ description }}",{% endif %}
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "RIMS",
+    "url": "https://rims.xsrt.net"
+  }
+}
+</script>
+
 <script type="text/javascript" src="{{ '/scripts/jquery/jquery-3.7.1.min.js' | cacheBust }}"></script>
 
 <script type="text/javascript" src="{{ '/scripts/calculator-core.js' | cacheBust }}"></script>

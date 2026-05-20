@@ -5,15 +5,23 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://rims.xsrt.net/tools/offset</loc>
+    <loc>https://rims.xsrt.net/</loc>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-05-20</lastmod>
   </url>
   <url>
-    <loc>https://rims.xsrt.net/tools/fitment</loc>
+    <loc>https://rims.xsrt.net/tools/offset/</loc>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-05-20</lastmod>
   </url>
   <url>
-    <loc>https://rims.xsrt.net/tools/equivalents</loc>
+    <loc>https://rims.xsrt.net/tools/fitment/</loc>
     <changefreq>monthly</changefreq>
+    <lastmod>2026-05-20</lastmod>
+  </url>
+  <url>
+    <loc>https://rims.xsrt.net/tools/equivalents/</loc>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-05-20</lastmod>
   </url>
 </urlset>
