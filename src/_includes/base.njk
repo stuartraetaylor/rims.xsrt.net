@@ -22,7 +22,7 @@
     <span class="site-nav-brand">RIMS</span>
     <!-- Hamburger (mobile) -->
     <button id="nav-toggle" class="site-nav-toggle"
-            aria-label="Menu" aria-expanded="false">&#9776;</button>
+            aria-label="Menu" aria-expanded="false">&#9776; Calculators</button>
     <!-- Nav links -->
     <ul id="nav-menu" class="site-nav-menu">
       <li id="nav-offset">
@@ -67,14 +67,37 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
   if (!tabs.length) return;
 
   var activeTab = 'tab-calculator';
+  var previousTab = null;
+
+  function updateBackLinks() {
+    document.querySelectorAll('.tab-back').forEach(function(link) {
+      if (previousTab) {
+        link.classList.remove('hidden');
+      } else {
+        link.classList.add('hidden');
+      }
+    });
+  }
 
   window.switchTab = function(targetId) {
+    if (targetId !== activeTab) {
+      previousTab = activeTab;
+    }
     activeTab = targetId;
     tabs.forEach(function(t) {
       var isActive = t.getAttribute('data-tab') === targetId;
       t.classList.toggle('tab-btn-active', isActive);
     });
     applyLayout();
+    updateBackLinks();
+  }
+
+  window.goBack = function() {
+    if (previousTab) {
+      var target = previousTab;
+      previousTab = null;
+      switchTab(target);
+    }
   }
 
   function applyLayout() {
