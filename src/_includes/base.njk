@@ -44,6 +44,9 @@
   </div>
 </nav>
 
+<!-- Menu overlay (closes hamburger menu on outside tap) -->
+<div id="nav-overlay" class="nav-overlay hidden"></div>
+
 <!-- Main content -->
 <main id="content" class="entry-content page-content">
   <h1 class="sr-only">{{ title }}</h1>
@@ -52,13 +55,35 @@
 
 <script>
 // Hamburger menu toggle
-document.getElementById('nav-toggle').addEventListener('click', function() {
+(function() {
+  var toggle = document.getElementById('nav-toggle');
   var menu = document.getElementById('nav-menu');
-  var isOpening = menu.classList.contains('hidden');
-  menu.classList.toggle('hidden', !isOpening);
-  menu.classList.toggle('flex', isOpening);
-  this.setAttribute('aria-expanded', isOpening ? 'true' : 'false');
-});
+  var overlay = document.getElementById('nav-overlay');
+
+  function closeMenu() {
+    menu.classList.add('hidden');
+    menu.classList.remove('flex');
+    overlay.classList.add('hidden');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  function openMenu() {
+    menu.classList.remove('hidden');
+    menu.classList.add('flex');
+    overlay.classList.remove('hidden');
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+
+  toggle.addEventListener('click', function() {
+    if (menu.classList.contains('hidden')) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+  });
+
+  overlay.addEventListener('click', closeMenu);
+})();
 
 // Mobile tab switching
 (function() {

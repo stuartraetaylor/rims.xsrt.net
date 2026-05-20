@@ -133,6 +133,9 @@
   .site-nav-link {
     @apply block px-4 py-3 md:py-0 text-[var(--color-nav-link)] hover:underline;
   }
+  .nav-overlay {
+    @apply fixed inset-0 z-40 md:hidden;
+  }
 
   /* Mobile tabs */
   .tab-bar {
