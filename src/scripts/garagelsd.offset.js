@@ -323,7 +323,10 @@ class OffsetCalculator {
       }
     }
 
-    if (hasValues) calcFn();
+    if (hasValues) {
+      calcFn();
+      setTimeout(() => { if (window.switchTab) switchTab('tab-results'); }, 100);
+    }
   }
 
   demo(type, n) {
