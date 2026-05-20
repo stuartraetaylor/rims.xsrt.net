@@ -54,13 +54,10 @@
 // Hamburger menu toggle
 document.getElementById('nav-toggle').addEventListener('click', function() {
   var menu = document.getElementById('nav-menu');
-  menu.classList.toggle('hidden');
-  if (menu.classList.contains('hidden')) {
-    this.setAttribute('aria-expanded', 'false');
-  } else {
-    menu.classList.add('flex');
-    this.setAttribute('aria-expanded', 'true');
-  }
+  var isOpening = menu.classList.contains('hidden');
+  menu.classList.toggle('hidden', !isOpening);
+  menu.classList.toggle('flex', isOpening);
+  this.setAttribute('aria-expanded', isOpening ? 'true' : 'false');
 });
 
 // Mobile tab switching
