@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{{ title }}{% if title %} | {% endif %}Wheel offset and fitment comparison tools</title>
+
+<script type="text/javascript" src="/scripts/jquery/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="/scripts/jquery/jquery-ui-1.14.1.min.js"></script>
+
+<script type="text/javascript" src="/scripts/common.js"></script>
+<script type="text/javascript" src="/scripts/garagelsd.offset.js"></script>
+
+<link rel="stylesheet" type="text/css" media="all" href="/style/style.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/scripts/style.offset.css" />
+
+<style type="text/css">
+  {% if navActive %}#nav-{{ navActive }} a:link { text-decoration: underline; }{% endif %}
+</style>
+</head>
+
+<body>
+<div id="navigation">
+  <ul class="container clearfix">
+    <li id="nav-equivalents"><a href="/tools/equivalents">Equivalent Arch Clearance Calculator</a></li>
+    <li id="nav-fitment"><a href="/tools/fitment">Wheel Fitment Comparison Calculator</a></li>
+    <li id="nav-offset"><a href="/tools/offset">Split Rim Offset Calculator</a></li>
+  </ul>
+</div>
+
+<div id="content" class="entry-content container">
+  <h1>{{ title }}</h1>
+{{ content | safe }}
+</div>
+
+</body>
+</html>

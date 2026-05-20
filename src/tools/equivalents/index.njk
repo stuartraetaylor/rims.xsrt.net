@@ -1,34 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<title>Equivalent Arch Clearance Calculator | Wheel offset and fitment comparison tools</title>
-
-<script type="text/javascript" src="/scripts/jquery/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="/scripts/jquery/jquery-ui-1.14.1.min.js"></script>
-
-<script type="text/javascript" src="/scripts/common.js?ver=1.2.1"></script>
-<script type="text/javascript" src="/scripts/garagelsd.offset.js?ver=2.1.6"></script>
-
-<link rel="stylesheet" type="text/css" media="all" href="/style/style.css" />
-<link rel="stylesheet" type="text/css" media="all" href="/scripts/style.offset.css" />
-
-<style type="text/css">
-  #nav-equivalents a:link { text-decoration: underline; }
-</style>
-</head>
-
-<body>
-<div id="navigation">
-  <ul class="container clearfix">
-    <li id="nav-equivalents"><a href="/tools/equivalents">Equivalent Arch Clearance Calculator</a></li>
-    <li id="nav-fitment"><a href="/tools/fitment">Wheel Fitment Comparison Calculator</a></li>
-    <li id="nav-offset"><a href="/tools/offset">Split Rim Offset Calculator</a></li>
-  </ul>
-</div>
-
-<div id="content" class="entry-content container">
-  <h1>Equivalent Arch Clearance Calculator</h1>
+---
+layout: base.njk
+title: Equivalent Arch Clearance Calculator
+navActive: equivalents
+---
 <div id="offset-calculator" class="alignleft">
 <h3>Single Wheel Details</h3>
 <form onsubmit="calculator.calculateEquivalents(this); return false;" onreset="calculator.clearall();">
@@ -67,7 +41,3 @@
 <p>For example, you can calculate that a 9.5J et12 wheel would have the same arch clearance as an 8J et-7 wheel.</p>
 <p><a href="javascript:calculator.demo('offset-comparison', 0);">Click for a demo!</a></p>
   </div>
-</div>
-
-</body>
-</html>

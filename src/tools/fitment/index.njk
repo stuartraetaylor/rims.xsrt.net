@@ -1,34 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<title>Wheel Fitment Comparison Calculator | Wheel offset and fitment comparison tools</title>
-
-<script type="text/javascript" src="/scripts/jquery/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="/scripts/jquery/jquery-ui-1.14.1.min.js"></script>
-
-<script type="text/javascript" src="/scripts/common.js?ver=1.2.1"></script>
-<script type="text/javascript" src="/scripts/garagelsd.offset.js?ver=2.1.6"></script>
-
-<link rel="stylesheet" type="text/css" media="all" href="/style/style.css" />
-<link rel="stylesheet" type="text/css" media="all" href="/scripts/style.offset.css" />
-
-<style type="text/css">
-  #nav-fitment a:link { text-decoration: underline; }
-</style>
-</head>
-
-<body>
-<div id="navigation">
-  <ul class="container clearfix">
-    <li id="nav-equivalents"><a href="/tools/equivalents">Equivalent Arch Clearance Calculator</a></li>
-    <li id="nav-fitment"><a href="/tools/fitment">Wheel Fitment Comparison Calculator</a></li>
-    <li id="nav-offset"><a href="/tools/offset">Split Rim Offset Calculator</a></li>
-  </ul>
-</div>
-
-<div id="content" class="entry-content container">
-  <h1>Wheel Fitment Comparison Calculator</h1>
+---
+layout: base.njk
+title: Wheel Fitment Comparison Calculator
+navActive: fitment
+---
 <div id="offset-calculator" class="alignleft">
 <h3>Wheel Details (old vs. new)</h3>
 <form onsubmit="calculator.calculateFitment(this); return false;" onreset="calculator.clearall();">
@@ -99,7 +73,3 @@
 <p>For example, you can see that a 9.5J et12 wheel has 37mm less arch clearance than an 8J et30 wheel; which is equivalent to having an 8J et-7 or 11J et31 wheel.</p>
 <p><a href="javascript:calculator.demo('wheel-fitment', 0);">Click for a demo!</a></p>
   </div>
-</div>
-
-</body>
-</html>
