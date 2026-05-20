@@ -147,11 +147,6 @@ function OffsetCalculator() {
     });
   });
   
-  register(this, "share",
-  function(form) {
-    $j('#share-dialog').dialog('open');
-  });
-
   register(this, "displayComparison", 
   function(width, offset, diameter) {
     this.displayComparison(width, offset, diameter, comparisonState.minWidth, comparisonState.maxWidth, 0.5);
