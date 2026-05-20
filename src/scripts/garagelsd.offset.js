@@ -177,7 +177,7 @@ class OffsetCalculator {
     const rw = this.core.round(newWidth, 2);
     const ro = this.core.round(newOffset);
     let output = `<span class="link">RIMTUCK! ${this.rimtuckFRLink(rw, ro, diameter, ' / ', '&nbsp;( ', ' )')}</span>`;
-    output += `<span class="link"><a href="${this.core.willTheyFitUrl(oldWidth, oldOffset, newWidth, newOffset, diameter)}" target="_blank" rel="external" title="Compare with WillTheyFit.com">Will They Fit?</a></span>`;
+    output += `<span class="link"><a href="${this.core.willTheyFitUrl(oldWidth, oldOffset, newWidth, newOffset, diameter)}" target="_blank" rel="external noopener noreferrer" title="Compare with WillTheyFit.com">Will They Fit?</a></span>`;
     $j('#resource-links').html(output);
   }
 
@@ -193,7 +193,7 @@ class OffsetCalculator {
   rimtuckFRLink(width, offset, diameter, sep, before = '', after = '') {
     const frontUrl = this.core.rimtuckUrl(width, offset, diameter, 'f');
     const rearUrl = this.core.rimtuckUrl(width, offset, diameter, 'r');
-    return `${before}<a href="${frontUrl}" target="_blank" rel="external" title="Front fitment on RIMTUCK.com">F</a>${sep}<a href="${rearUrl}" target="_blank" rel="external" title="Rear fitment on RIMTUCK.com">R</a>${after}`;
+    return `${before}<a href="${frontUrl}" target="_blank" rel="external noopener noreferrer" title="Front fitment on RIMTUCK.com">F</a>${sep}<a href="${rearUrl}" target="_blank" rel="external noopener noreferrer" title="Rear fitment on RIMTUCK.com">R</a>${after}`;
   }
 
   validateForm(fields) {
