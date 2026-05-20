@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ title }}{% if title %} | {% endif %}Wheel offset and fitment comparison tools</title>
 
-<script type="text/javascript" src="/scripts/jquery/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="{{ '/scripts/jquery/jquery-3.7.1.min.js' | cacheBust }}"></script>
 
-<script type="text/javascript" src="/scripts/common.js"></script>
-<script type="text/javascript" src="/scripts/garagelsd.offset.js"></script>
+<script type="text/javascript" src="{{ '/scripts/common.js' | cacheBust }}"></script>
+<script type="text/javascript" src="{{ '/scripts/garagelsd.offset.js' | cacheBust }}"></script>
 
-<link rel="stylesheet" type="text/css" media="all" href="/style/main.css" />
-<link rel="stylesheet" type="text/css" media="all" href="/scripts/style.offset.css" />
+<link rel="stylesheet" type="text/css" media="all" href="{{ '/style/main.css' | cacheBust }}" />
+<link rel="stylesheet" type="text/css" media="all" href="{{ '/scripts/style.offset.css' | cacheBust }}" />
 </head>
 
 <body class="page-body">
