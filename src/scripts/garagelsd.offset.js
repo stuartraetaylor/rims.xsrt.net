@@ -131,19 +131,15 @@ function OffsetCalculator() {
 
   register(this, "initSlider",
   function() {
-    if (!($j('#comparisonSlider').length > 0))
-      return;
-    
+    var el = document.getElementById('comparisonSlider');
+    if (!el) return;
+
     var calculator = this;
-    $j('#comparisonSlider').slider({
-  	  min: 5, max: 11, step: 0.5,
-      disabled: false,
-      value: comparisonState.minWidth,
-      stop: function(e,ui) { 
-        comparisonState.minWidth = ui.value; 
-        comparisonState.maxWidth = ui.value+4;
-        calculator.displayComparison(comparisonState.width, comparisonState.offset, comparisonState.diameter);
-      }
+    el.value = comparisonState.minWidth;
+    el.addEventListener('input', function() {
+      comparisonState.minWidth = parseFloat(this.value);
+      comparisonState.maxWidth = comparisonState.minWidth + 4;
+      calculator.displayComparison(comparisonState.width, comparisonState.offset, comparisonState.diameter);
     });
   });
   
@@ -178,7 +174,7 @@ function OffsetCalculator() {
       }
       output += "</td>";
     }
-    output += "</tr><th></th><td colspan=\"9\"><div id=\"comparisonSlider\"></div></td>";
+    output += "</tr><th></th><td colspan=\"9\"><input type=\"range\" id=\"comparisonSlider\" min=\"5\" max=\"11\" step=\"0.5\" value=\"" + comparisonState.minWidth + "\" class=\"w-full my-3 mx-0\" /></td>";
     output += "</tr></table>";
     $j("#comparison").html(output);
     this.initSlider();
