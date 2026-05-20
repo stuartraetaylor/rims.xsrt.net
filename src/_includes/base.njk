@@ -77,7 +77,7 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
 
   var activeTab = 'tab-calculator';
 
-  function switchTab(targetId) {
+  window.switchTab = function(targetId) {
     activeTab = targetId;
     tabs.forEach(function(t) {
       var isActive = t.getAttribute('data-tab') === targetId;
