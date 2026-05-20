@@ -12,6 +12,12 @@
   padding: 4px 12px;
 }
 
+#comparison .unit,
+#offset-calculator-result .unit {
+  color: #666;
+  font-weight: normal;
+}
+
 #offset-calculator-result tr td {
   min-width: 60px;
 }
