@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@source "../**/*.njk";
+@source "../**/*.html";
+
+@theme {
+  /* Existing colour palette */
+  --color-page-bg: #f1f1f1;
+  --color-nav-bg: #111111;
+  --color-nav-link: #a68503;
+  --color-text: #444444;
+  --color-text-dark: #333333;
+  --color-link: #7D6402;
+  --color-link-hover: #333333;
+  --color-calc-bg: #f9f9f9;
+  --color-calc-border: #E9E9E9;
+  --color-calc-heading: #E9E9E9;
+  --color-table-border: #e7e7e7;
+  --color-btn-border: #999999;
+  --color-input-cream: #FFFFCC;
+  --color-input-grey: #E8E8E8;
+}
+
+/* Button component — preserves original gradient style */
+@layer components {
+  .button {
+    border: 1px solid #999;
+    border-radius: 3px;
+    text-shadow: 0 1px 1px white;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+    font: bold 11px Sans-Serif;
+    padding: 5px 10px;
+    white-space: nowrap;
+    vertical-align: middle;
+    color: #666;
+    background: linear-gradient(to bottom, white, #E0E0E0);
+    cursor: pointer;
+  }
+  .button:hover, .button:focus {
+    border-color: #999;
+    background: linear-gradient(to bottom, white, #F0F0F0);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25), inset 0 0 3px #fff;
+  }
+  .button:active {
+    border: 1px solid #AAA;
+    border-bottom-color: #CCC;
+    border-top-color: #999;
+    box-shadow: inset 0 1px 2px #aaa;
+    background: linear-gradient(to bottom, #E6E6E6, gainsboro);
+  }
+
+  /* Mobile: larger touch targets for buttons */
+  @media (max-width: 1023px) {
+    .button {
+      font-size: 14px;
+      padding: 10px 20px;
+      min-height: 44px;
+    }
+  }
+
+  /* Calculator card */
+  .calc-card {
+    @apply bg-[var(--color-calc-bg)] border-2 border-[var(--color-calc-border)]
+           p-4 rounded-lg shadow-sm mb-6 w-full max-w-[620px];
+  }
+  .calc-heading {
+    @apply text-base font-bold bg-[var(--color-calc-heading)] text-[var(--color-text-dark)]
+           px-2 py-1 -mx-4 -mt-4 mb-4 rounded-t-md;
+  }
+
+  /* Form fields */
+  .calc-field {
+    @apply flex items-center gap-2;
+  }
+  .calc-input {
+    @apply ml-auto w-16 px-2 py-1 text-right rounded
+           border border-gray-300 shadow-inner text-sm md:py-0.5;
+  }
+  .calc-unit {
+    @apply text-xs text-gray-500;
+  }
+  .calc-label {
+    @apply font-bold whitespace-nowrap;
+  }
+  .calc-label-old {
+    @apply font-bold whitespace-nowrap text-[#C00];
+  }
+  .calc-label-new {
+    @apply font-bold whitespace-nowrap text-[#060];
+  }
+  .calc-controls {
+    @apply text-center py-4;
+  }
+
+  /* Description / About panel */
+  .about-panel {
+    @apply lg:flex-1 min-w-0 text-[var(--color-text-dark)] text-base leading-relaxed;
+  }
+  .about-heading {
+    @apply text-lg font-bold mb-3;
+  }
+  .about-link {
+    @apply text-[var(--color-link)] hover:text-[var(--color-link-hover)] underline;
+  }
+
+  /* Page layout */
+  .page-body {
+    @apply bg-[var(--color-page-bg)] text-[var(--color-text)] font-sans text-sm leading-relaxed;
+  }
+  .page-content {
+    @apply max-w-6xl mx-auto px-4 pt-14 md:pt-16;
+  }
+
+  /* Navigation */
+  .site-nav {
+    @apply fixed top-0 w-full bg-[var(--color-nav-bg)] z-50;
+  }
+  .site-nav-inner {
+    @apply max-w-6xl mx-auto px-4 flex items-center justify-between h-10;
+  }
+  .site-nav-brand {
+    @apply text-[var(--color-nav-link)] font-bold text-sm hidden md:block;
+  }
+  .site-nav-toggle {
+    @apply md:hidden text-[var(--color-nav-link)] text-2xl leading-none p-1;
+  }
+  .site-nav-menu {
+    @apply hidden md:flex md:gap-4 md:items-center
+           absolute md:static top-10 left-0 w-full md:w-auto
+           bg-[var(--color-nav-bg)] md:bg-transparent
+           flex-col md:flex-row font-bold text-sm;
+  }
+  .site-nav-link {
+    @apply block px-4 py-3 md:py-0 text-[var(--color-nav-link)] hover:underline;
+  }
+
+  /* Mobile tabs */
+  .tab-bar {
+    @apply flex lg:hidden border-b border-[var(--color-calc-border)] mb-4;
+  }
+  .tab-btn {
+    @apply flex-1 py-2.5 px-2 text-sm font-bold text-center
+           min-h-[44px] border-b-2 border-transparent text-gray-400;
+  }
+  .tab-btn-active {
+    @apply border-[var(--color-nav-link)] text-[var(--color-text-dark)];
+  }
+}

@@ -4,8 +4,9 @@
   "description": "Website: https://rims.xsrt.net/",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy",
-    "dev": "eleventy --serve"
+    "build": "eleventy && tailwindcss -i src/style/main.css -o _site/style/main.css --minify",
+    "build:css": "tailwindcss -i src/style/main.css -o _site/style/main.css",
+    "dev": "npx concurrently \"eleventy --serve\" \"tailwindcss -i src/style/main.css -o _site/style/main.css --watch\""
   },
   "repository": {
     "type": "git",
@@ -14,11 +15,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
   "bugs": {
     "url": "https://github.com/stuartraetaylor/rims.xsrt.net/issues"
   },
   "homepage": "https://github.com/stuartraetaylor/rims.xsrt.net#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.5"
+    "@11ty/eleventy": "^3.1.5",
+    "@tailwindcss/cli": "^4.3.0",
+    "concurrently": "^9.2.1",
+    "tailwindcss": "^4.3.0"
   }
 }
