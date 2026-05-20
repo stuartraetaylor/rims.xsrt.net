@@ -1,52 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<title>Split Rim Offset Calculator | Wheel offset and fitment comparison tools</title>
-
-<script type="text/javascript" src="/scripts/jquery/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="/scripts/jquery/jquery.scrollTo.min.js"></script>
-<script type="text/javascript" src="/scripts/jquery/jquery-ui-1.10.0.custom.min.js"></script>
-
-<script type="text/javascript" src="/scripts/common.js?ver=1.2.1"></script>
-<script type="text/javascript" src="/scripts/garagelsd.offset.js?ver=2.1.6"></script>
-
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-37651946-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-<link rel="stylesheet" type="text/css" media="all" href="/style/style.css" />
-<link rel="stylesheet" type="text/css" media="all" href="/style/garagelsd-style.css" />
-<link rel="stylesheet" type="text/css" media="all" href="/scripts/style.offset.css" />
-
-<style type="text/css">
-  #nav-offset a:link { text-decoration: underline; }
-  .ui-dialog .ui-dialog-titlebar { height: 40px; }
-</style>
-</head>
-
-<body>
-<div id="navigation">
-  <ul class="container clearfix">
-    <li id="nav-equivalents"><a href="/tools/equivalents">Equivalent Arch Clearance Calculator</a></li>
-    <li id="nav-fitment"><a href="/tools/fitment">Wheel Fitment Comparison Calculator</a></li>
-    <li id="nav-offset"><a href="/tools/offset">Split Rim Offset Calculator</a></li>
-  </ul>
-</div>
-
-<div id="content" class="entry-content container">
-  <h1>Split Rim Offset Calculator</h1>
+---
+layout: base.njk
+title: Split Rim Offset Calculator
+navActive: offset
+---
 <div id="offset-calculator" class="alignleft">
 <h3>Wheel Details (3-piece wheel / split rim)</h3>
-<form onsubmit="calculator.calculate(this); trackEvent('Wheel Tools', 'split-rim', calculator.results); return false;" onreset="calculator.clearall();">
+<form onsubmit="calculator.calculate(this); return false;" onreset="calculator.clearall();">
 <div class="field-group">
 <div class="field">
   <label for="oldOuter" style="color: #C00;">Original <em>outer</em> lip width</label> 
@@ -123,10 +82,3 @@
 </ul>
 <p>* Note that you do not have to fill in all the fields for the calculator to give you a result.</p>
   </div>
-</div>
-
-<div id="share-dialog" title="Copy the URL to share your results">
-</div>
-
-</body>
-</html>

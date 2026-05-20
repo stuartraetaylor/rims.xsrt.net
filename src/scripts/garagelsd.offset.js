@@ -147,11 +147,6 @@ function OffsetCalculator() {
     });
   });
   
-  register(this, "share",
-  function(form) {
-    $j('#share-dialog').dialog('open');
-  });
-
   register(this, "displayComparison", 
   function(width, offset, diameter) {
     this.displayComparison(width, offset, diameter, comparisonState.minWidth, comparisonState.maxWidth, 0.5);
@@ -272,7 +267,7 @@ function OffsetCalculator() {
   function(selector) { $j(selector).fadeTo('fast', 1.0); });
 
   register(this, "scrollTo",
-  function(selector) { $j.scrollTo($j(selector), 500); });
+  function(selector) { document.querySelector(selector).scrollIntoView({ behavior: 'smooth' }); });
 
   register(this, "clearResults",
   function() {
@@ -329,7 +324,7 @@ function OffsetCalculator() {
   function(element) {
     var numeric = new RegExp("^[\+\-]?[0-9]+(\\.[0-9]*)?$");
 
-    element.value = $j.trim(element.value);
+    element.value = element.value.trim();
     if (element.value.length == 0)
       element.value = "0";
 
