@@ -3,73 +3,70 @@ layout: base.njk
 title: Wheel Fitment Comparison Calculator
 navActive: fitment
 ---
-<div id="offset-calculator" class="alignleft">
-<h3>Wheel Details (old vs. new)</h3>
+<div id="offset-calculator" class="bg-[--color-calc-bg] border-2 border-[--color-calc-border] p-4 rounded-lg shadow-sm mb-6 w-full max-w-[620px]">
+<h3 class="text-base font-bold bg-[--color-calc-heading] text-[--color-text-dark] px-2 py-1 -mx-4 -mt-4 mb-4 rounded-t-md">Wheel Details (old vs. new)</h3>
 <form onsubmit="calculator.calculateFitment(this); return false;" onreset="calculator.clearall();">
-<div class="field-group">
-<div class="field">
-  <label for="wheelWidth" style="color: #C00;">Old wheel <em>width</em></label> 
-  <span class="unit">(<abbr title="inches">in.</abbr>)</span>
-  <input type="text" id="wheelWidth" name="wheelWidth" size="4" style="background: #FFE4B5;" />
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
+  <div class="flex items-center gap-2">
+    <label for="wheelWidth" class="font-bold text-[#C00] whitespace-nowrap">Old wheel <em class="uppercase not-italic">width</em></label>
+    <span class="text-xs text-gray-500">(<abbr title="inches">in.</abbr>)</span>
+    <input type="text" id="wheelWidth" name="wheelWidth" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FFE4B5] md:py-0.5" />
+  </div>
+  <div class="flex items-center gap-2">
+    <label for="offset" class="font-bold text-[#C00] whitespace-nowrap">Old wheel <em class="uppercase not-italic">offset</em></label>
+    <span class="text-xs text-gray-500">(<abbr title="millimetres">mm</abbr>)</span>
+    <input type="text" id="offset" name="offset" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FFE4B5] md:py-0.5" />
+  </div>
+  <div class="flex items-center gap-2">
+    <label for="newWheelWidth" class="font-bold text-[#060] whitespace-nowrap">New wheel <em class="uppercase not-italic">width</em></label>
+    <span class="text-xs text-gray-500">(<abbr title="inches">in.</abbr>)</span>
+    <input type="text" id="newWheelWidth" name="newWheelWidth" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FFE4B5] md:py-0.5" />
+  </div>
+  <div class="flex items-center gap-2">
+    <label for="newOffset" class="font-bold text-[#060] whitespace-nowrap">New wheel <em class="uppercase not-italic">offset</em></label>
+    <span class="text-xs text-gray-500">(<abbr title="millimetres">mm</abbr>)</span>
+    <input type="text" id="newOffset" name="newOffset" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#FFE4B5] md:py-0.5" />
+  </div>
+  <div class="flex items-center gap-2">
+    <label for="diameter" class="font-bold whitespace-nowrap">Wheel diameter</label>
+    <span class="text-xs text-gray-500">(<abbr title="inches">in.</abbr>)</span>
+    <input type="text" id="diameter" name="diameter" size="4" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#F0F0F0] md:py-0.5" />
+  </div>
+  <div class="flex items-center gap-2">
+    <label for="spacers" class="font-bold whitespace-nowrap">Spacers</label>
+    <span class="text-xs text-gray-500">(<abbr title="millimetres">mm</abbr>)</span>
+    <input type="text" id="spacers" name="spacers" size="4" value="0" class="ml-auto w-16 px-2 py-1 text-right rounded border border-gray-300 shadow-inner text-sm bg-[#F0F0F0] md:py-0.5" />
+  </div>
 </div>
-<div class="field">
-  <label for="offset" style="color: #C00;">Old wheel <em>offset</em></label>
-  <span class="unit">(<abbr title="millimetres">mm</abbr>)</span> 
-  <input type="text" id="offset" name="offset" size="4" style="background: #FFE4B5;" />
-</div>
-</div>
-<div class="field-group">
-<div class="field">
-  <label for="newWheelWidth" style="color: #060;">New wheel <em>width</em></label> 
-  <span class="unit">(<abbr title="inches">in.</abbr>)</span>
-  <input type="text" id="newWheelWidth" name="newWheelWidth" size="4" style="background: #FFE4B5;" />
-</div>
-</div>
-<div class="field">
-  <label for="newOffset" style="color: #060;">New wheel <em>offset</em></label>
-  <span class="unit">(<abbr title="millimetres">mm</abbr>)</span> 
-  <input type="text" id="newOffset" name="newOffset" size="4" style="background: #FFE4B5;" />
-</div>
-<div class="field-group">
-<div class="field">
-  <label for="diameter">Wheel diameter</label> 
-  <span class="unit">(<abbr title="inches">in.</abbr>)</span>
-  <input type="text" id="diameter" name="diameter" size="4" style="background: #F0F0F0;" />
-</div>
-<div class="field">
-  <label for="spacers">Spacers</label> 
-  <span class="unit">(<abbr title="millimetres">mm</abbr>)</span>
-  <input type="text" id="spacers" name="spacers" size="4" value="0" style="background: #F0F0F0;" />
-</div>
-</div>
-<div class="controls">
-  <input type="submit" class="button" value="Calculate" />&nbsp; 
-  <input type="reset"  class="button" value="Reset" />
+<div class="text-center py-4">
+  <input type="submit" class="button" value="Calculate" />&nbsp;
+  <input type="reset" class="button" value="Reset" />
 </div>
 </form>
 
-<table id="offset-calculator-result" class="results">
+<table id="offset-calculator-result" class="results w-full text-sm border border-[--color-table-border]">
 <tr><th></th><th>Old</th><th>New</th></tr>
-<tr><th>Wheel Width <span class="unit">(<abbr title="inches">in.</abbr>)</span></th>
+<tr><th>Wheel Width <span class="text-xs font-normal">(<abbr title="inches">in.</abbr>)</span></th>
 <td id="old-width">-</td><td id="new-width">-</td></tr>
-<tr><th>Wheel Offset <span class="unit">(<abbr title="millimetres">mm</abbr>)</span></th>
+<tr><th>Wheel Offset <span class="text-xs font-normal">(<abbr title="millimetres">mm</abbr>)</span></th>
 <td id="old-offset">-</td><td id="new-offset">-</td></tr>
-<tr><th>Overall Offset <span class="unit">(<abbr title="millimetres">mm</abbr>)</span></th>
+<tr><th>Overall Offset <span class="text-xs font-normal">(<abbr title="millimetres">mm</abbr>)</span></th>
 <td>-</td><td id="overall-offset">-</td></tr>
-<tr><th>Arch clearance <span class="unit">(<abbr title="millimetres">mm</abbr>)</span></th>
+<tr><th>Arch clearance <span class="text-xs font-normal">(<abbr title="millimetres">mm</abbr>)</span></th>
 <td>-</td><td id="arch-diff">-</td></tr>
-<tr><th>Strut clearance <span class="unit">(<abbr title="millimetres">mm</abbr>)</span></th>
+<tr><th>Strut clearance <span class="text-xs font-normal">(<abbr title="millimetres">mm</abbr>)</span></th>
 <td>-</td><td id="strut-diff">-</td></tr>
 </table>
 
 <div id="comparison" class="results"></div>
-<div id="resource-links" class="results"></div>
+<div id="resource-links" class="results text-right text-xs"></div>
 </div>
-  <div id="description">
-<h2>About the Wheel Fitment Calculator</h2>
-<p><img src="/images/wheel.jpg" width="300" alt="Wheel Calculator" /></p>
-<p>The wheel fitment calculator allows you to compare the arch and strut clearance of two different wheels.</p>
-<p>The calculator also provides a comparison of the new wheel against other wheel sizes with the same arch clearance.</p>
-<p>For example, you can see that a 9.5J et12 wheel has 37mm less arch clearance than an 8J et30 wheel; which is equivalent to having an 8J et-7 or 11J et31 wheel.</p>
-<p><a href="javascript:calculator.demo('wheel-fitment', 0);">Click for a demo!</a></p>
-  </div>
+
+<div id="description" class="text-[--color-text-dark] text-base leading-relaxed">
+<h2 class="text-lg font-bold mb-3">About the Wheel Fitment Calculator</h2>
+<p><img src="/images/wheel.jpg" width="300" alt="Wheel Calculator" class="rounded shadow-md mb-4" /></p>
+<p class="mb-4">The wheel fitment calculator allows you to compare the arch and strut clearance of two different wheels.</p>
+<p class="mb-4">The calculator also provides a comparison of the new wheel against other wheel sizes with the same arch clearance.</p>
+<p class="mb-4">For example, you can see that a 9.5J et12 wheel has 37mm less arch clearance than an 8J et30 wheel; which is equivalent to having an 8J et-7 or 11J et31 wheel.</p>
+<p><a href="javascript:calculator.demo('wheel-fitment', 0);" class="text-[--color-link] hover:text-[--color-link-hover] underline">Click for a demo!</a></p>
+</div>
