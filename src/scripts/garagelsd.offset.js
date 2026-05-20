@@ -325,7 +325,7 @@ class OffsetCalculator {
 
     if (hasValues) {
       calcFn();
-      if (window.switchTab) switchTab('tab-results');
+      setTimeout(() => { if (window.switchTab) switchTab('tab-results'); }, 100);
     }
   }
 
