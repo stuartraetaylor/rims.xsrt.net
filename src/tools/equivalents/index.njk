@@ -4,8 +4,8 @@ title: Equivalent Arch Clearance Calculator
 navActive: equivalents
 ---
 <!-- Mobile tab bar -->
-<div class="mobile-tabs flex lg:hidden border-b border-[--color-calc-border] mb-4">
-  <button class="mobile-tab flex-1 py-2.5 px-2 text-sm font-bold text-center min-h-[44px] border-b-2 border-[--color-nav-link] text-[--color-text-dark]" data-tab="tab-calculator">Calculator</button>
+<div class="mobile-tabs flex lg:hidden border-b border-[var(--color-calc-border)] mb-4">
+  <button class="mobile-tab flex-1 py-2.5 px-2 text-sm font-bold text-center min-h-[44px] border-b-2 border-[var(--color-nav-link)] text-[var(--color-text-dark)]" data-tab="tab-calculator">Calculator</button>
   <button class="mobile-tab flex-1 py-2.5 px-2 text-sm font-bold text-center min-h-[44px] border-b-2 border-transparent text-gray-400" data-tab="tab-results">Results</button>
   <button class="mobile-tab flex-1 py-2.5 px-2 text-sm font-bold text-center min-h-[44px] border-b-2 border-transparent text-gray-400" data-tab="tab-about">About</button>
 </div>
@@ -15,8 +15,8 @@ navActive: equivalents
 
 <!-- Tab: Calculator -->
 <div class="tab-panel" id="tab-calculator">
-<div id="offset-calculator" class="bg-[--color-calc-bg] border-2 border-[--color-calc-border] p-4 rounded-lg shadow-sm mb-6 w-full max-w-[620px]">
-<h3 class="text-base font-bold bg-[--color-calc-heading] text-[--color-text-dark] px-2 py-1 -mx-4 -mt-4 mb-4 rounded-t-md">Single Wheel Details</h3>
+<div id="offset-calculator" class="bg-[var(--color-calc-bg)] border-2 border-[var(--color-calc-border)] p-4 rounded-lg shadow-sm mb-6 w-full max-w-[620px]">
+<h3 class="text-base font-bold bg-[var(--color-calc-heading)] text-[var(--color-text-dark)] px-2 py-1 -mx-4 -mt-4 mb-4 rounded-t-md">Single Wheel Details</h3>
 <form onsubmit="calculator.calculateEquivalents(this); return false;" onreset="calculator.clearall();">
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
   <div class="flex items-center gap-2">
@@ -57,12 +57,12 @@ navActive: equivalents
 
 <!-- Tab: About -->
 <div class="tab-panel hidden lg:block" id="tab-about">
-<div id="description" class="lg:flex-1 min-w-0 text-[--color-text-dark] text-base leading-relaxed">
+<div id="description" class="lg:flex-1 min-w-0 text-[var(--color-text-dark)] text-base leading-relaxed">
 <h2 class="text-lg font-bold mb-3">About the Equivalent Arch Clearance Calculator</h2>
 <p class="mb-4">The equivalent arch clearance calculator allows you to compare a specified wheel against other wheel sizes with the same arch clearance.</p>
 <p class="mb-4">Once you have entered the wheel specification into the form on the left, the calculator will display the equivalent offset of wheels in various widths.</p>
 <p class="mb-4">For example, you can calculate that a 9.5J et12 wheel would have the same arch clearance as an 8J et-7 wheel.</p>
-<p><a href="javascript:calculator.demo('offset-comparison', 0);" class="text-[--color-link] hover:text-[--color-link-hover] underline">Click for a demo!</a></p>
+<p><a href="javascript:calculator.demo('offset-comparison', 0);" class="text-[var(--color-link)] hover:text-[var(--color-link-hover)] underline">Click for a demo!</a></p>
 </div>
 </div>
 </div>

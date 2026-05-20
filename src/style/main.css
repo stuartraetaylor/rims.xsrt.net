@@ -50,7 +50,7 @@
   }
 
   /* Mobile: larger touch targets for buttons */
-  @media (max-width: 768px) {
+  @media (max-width: 1023px) {
     .button {
       font-size: 14px;
       padding: 10px 20px;

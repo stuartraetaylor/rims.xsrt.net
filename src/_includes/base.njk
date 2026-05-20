@@ -14,35 +14,35 @@
 <link rel="stylesheet" type="text/css" media="all" href="/scripts/style.offset.css" />
 </head>
 
-<body class="bg-[--color-page-bg] text-[--color-text] font-sans text-sm leading-relaxed">
+<body class="bg-[var(--color-page-bg)] text-[var(--color-text)] font-sans text-sm leading-relaxed">
 
 <!-- Navigation -->
-<nav class="fixed top-0 w-full bg-[--color-nav-bg] z-50">
+<nav class="fixed top-0 w-full bg-[var(--color-nav-bg)] z-50">
   <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-10">
-    <span class="text-[--color-nav-link] font-bold text-sm hidden md:block">RIMS</span>
+    <span class="text-[var(--color-nav-link)] font-bold text-sm hidden md:block">RIMS</span>
     <!-- Hamburger (mobile) -->
-    <button id="nav-toggle" class="md:hidden text-[--color-nav-link] text-2xl leading-none p-1"
+    <button id="nav-toggle" class="md:hidden text-[var(--color-nav-link)] text-2xl leading-none p-1"
             aria-label="Menu" aria-expanded="false">&#9776;</button>
     <!-- Nav links -->
     <ul id="nav-menu" class="
       hidden md:flex md:gap-4 md:items-center
       absolute md:static top-10 left-0 w-full md:w-auto
-      bg-[--color-nav-bg] md:bg-transparent
+      bg-[var(--color-nav-bg)] md:bg-transparent
       flex-col md:flex-row
       font-bold text-sm
     ">
       <li id="nav-offset">
-        <a href="/tools/offset" class="block px-4 py-3 md:py-0 text-[--color-nav-link] hover:underline {% if navActive == 'offset' %}underline{% endif %}">
+        <a href="/tools/offset" class="block px-4 py-3 md:py-0 text-[var(--color-nav-link)] hover:underline {% if navActive == 'offset' %}underline{% endif %}">
           Split Rim Offset
         </a>
       </li>
       <li id="nav-fitment">
-        <a href="/tools/fitment" class="block px-4 py-3 md:py-0 text-[--color-nav-link] hover:underline {% if navActive == 'fitment' %}underline{% endif %}">
+        <a href="/tools/fitment" class="block px-4 py-3 md:py-0 text-[var(--color-nav-link)] hover:underline {% if navActive == 'fitment' %}underline{% endif %}">
           Wheel Fitment
         </a>
       </li>
       <li id="nav-equivalents">
-        <a href="/tools/equivalents" class="block px-4 py-3 md:py-0 text-[--color-nav-link] hover:underline {% if navActive == 'equivalents' %}underline{% endif %}">
+        <a href="/tools/equivalents" class="block px-4 py-3 md:py-0 text-[var(--color-nav-link)] hover:underline {% if navActive == 'equivalents' %}underline{% endif %}">
           Equivalent Arch Clearance
         </a>
       </li>
@@ -75,18 +75,29 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
   var panels = document.querySelectorAll('.tab-panel');
   if (!tabs.length) return;
 
+  var activeTab = 'tab-calculator';
+
   function switchTab(targetId) {
+    activeTab = targetId;
     tabs.forEach(function(t) {
       var isActive = t.getAttribute('data-tab') === targetId;
-      t.classList.toggle('border-[--color-nav-link]', isActive);
-      t.classList.toggle('text-[--color-text-dark]', isActive);
+      t.classList.toggle('border-[var(--color-nav-link)]', isActive);
+      t.classList.toggle('text-[var(--color-text-dark)]', isActive);
       t.classList.toggle('border-transparent', !isActive);
       t.classList.toggle('text-gray-400', !isActive);
     });
+    applyLayout();
+  }
+
+  function applyLayout() {
+    var isMobile = window.innerWidth < 1024;
     panels.forEach(function(p) {
-      if (window.innerWidth < 1024) {
-        p.classList.toggle('hidden', p.id !== targetId);
-        p.classList.toggle('block', p.id === targetId);
+      if (isMobile) {
+        p.classList.toggle('hidden', p.id !== activeTab);
+        p.classList.toggle('block', p.id === activeTab);
+      } else {
+        p.classList.remove('hidden');
+        p.classList.add('block');
       }
     });
   }
@@ -107,15 +118,7 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
     });
   }
 
-  // On resize to desktop, show all panels
-  window.addEventListener('resize', function() {
-    if (window.innerWidth >= 1024) {
-      panels.forEach(function(p) {
-        p.classList.remove('hidden');
-        p.classList.add('block');
-      });
-    }
-  });
+  window.addEventListener('resize', applyLayout);
 })();
 </script>
 

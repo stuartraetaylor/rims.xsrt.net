@@ -136,7 +136,7 @@ function OffsetCalculator() {
 
     var calculator = this;
     el.value = comparisonState.minWidth;
-    el.addEventListener('input', function() {
+    el.addEventListener('change', function() {
       comparisonState.minWidth = parseFloat(this.value);
       comparisonState.maxWidth = comparisonState.minWidth + 4;
       calculator.displayComparison(comparisonState.width, comparisonState.offset, comparisonState.diameter);

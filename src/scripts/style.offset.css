@@ -31,7 +31,7 @@
 #resource-links .link { display: block; }
 
 /* Comparison table scrollable on mobile */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   #comparison { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   #comparison table td { min-width: 36px; font-size: 12px; }
 }
