@@ -250,16 +250,16 @@ class OffsetCalculator {
 
   clearAllNoFade() {
     jQuery.fx.off = true;
-    this.clearall();
+    this.clearall(false);
     jQuery.fx.off = false;
   }
 
-  clearall() {
+  clearall(clearUrl = true) {
     this.fadeOff('.results');
     this.clearResults();
     this.clearComparison();
     this.clearLinks();
-    this.clearHash();
+    if (clearUrl) this.clearHash();
     this.results = null;
   }
 
