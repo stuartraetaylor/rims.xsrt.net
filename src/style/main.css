@@ -145,4 +145,9 @@
   .tab-btn-active {
     @apply border-[var(--color-nav-link)] text-[var(--color-text-dark)];
   }
+  .tab-back {
+    @apply lg:hidden block text-center py-4 mt-4 text-sm
+           text-[var(--color-link)] hover:text-[var(--color-link-hover)]
+           underline cursor-pointer;
+  }
 }
