@@ -307,3 +307,42 @@ describe('rimtuckUrl', () => {
     expect(url).not.toContain('diameter');
   });
 });
+
+describe('toHash', () => {
+  test('serializes values', () => {
+    const hash = core.toHash({ oi: '4', oo: '1', w: '8', o: '32' });
+    expect(hash).toBe('oi=4&oo=1&w=8&o=32');
+  });
+
+  test('omits zero values', () => {
+    const hash = core.toHash({ w: '8', o: '30', s: '0', d: '0' });
+    expect(hash).toBe('w=8&o=30');
+  });
+
+  test('omits empty values', () => {
+    const hash = core.toHash({ w: '9.5', o: '', d: '17' });
+    expect(hash).toBe('w=9.5&d=17');
+  });
+});
+
+describe('fromHash', () => {
+  test('parses hash string', () => {
+    const result = core.fromHash('#oi=4&oo=1&w=8&o=32');
+    expect(result).toEqual({ oi: '4', oo: '1', w: '8', o: '32' });
+  });
+
+  test('handles hash without leading #', () => {
+    const result = core.fromHash('w=8&o=30');
+    expect(result).toEqual({ w: '8', o: '30' });
+  });
+
+  test('returns empty object for empty hash', () => {
+    expect(core.fromHash('')).toEqual({});
+    expect(core.fromHash('#')).toEqual({});
+  });
+
+  test('handles negative values', () => {
+    const result = core.fromHash('#o=-10');
+    expect(result.o).toBe('-10');
+  });
+});
