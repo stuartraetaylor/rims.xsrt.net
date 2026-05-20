@@ -62,6 +62,16 @@
 
 <link rel="stylesheet" type="text/css" media="all" href="{{ '/style/main.css' | cacheBust }}" />
 <link rel="stylesheet" type="text/css" media="all" href="{{ '/scripts/style.offset.css' | cacheBust }}" />
+
+<!-- Apply dark mode before paint to prevent flash -->
+<script>
+(function() {
+  var stored = localStorage.getItem('theme');
+  if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+</script>
 </head>
 
 <body class="page-body">
@@ -91,6 +101,11 @@
         </a>
       </li>
     </ul>
+    <!-- Dark mode toggle (right-aligned) -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="theme-icon-light">☀️</span>
+      <span class="theme-icon-dark">🌙</span>
+    </button>
   </div>
 </nav>
 
@@ -133,6 +148,22 @@
   });
 
   overlay.addEventListener('click', closeMenu);
+})();
+
+// Dark mode toggle
+(function() {
+  var btn = document.getElementById('theme-toggle');
+  function updateIcon() {
+    var isDark = document.documentElement.classList.contains('dark');
+    btn.querySelector('.theme-icon-light').style.display = isDark ? 'none' : 'inline';
+    btn.querySelector('.theme-icon-dark').style.display = isDark ? 'inline' : 'none';
+  }
+  btn.addEventListener('click', function() {
+    var isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateIcon();
+  });
+  updateIcon();
 })();
 
 // Mobile tab switching

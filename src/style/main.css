@@ -4,7 +4,7 @@
 @source "../**/*.html";
 
 @theme {
-  /* Existing colour palette */
+  /* Colour palette */
   --color-page-bg: #f1f1f1;
   --color-nav-bg: #111111;
   --color-nav-link: #a68503;
@@ -17,8 +17,34 @@
   --color-calc-heading: #E9E9E9;
   --color-table-border: #e7e7e7;
   --color-btn-border: #999999;
-  --color-input-cream: #FFFFCC;
-  --color-input-grey: #E8E8E8;
+  --color-input-outer: #FCD116;
+  --color-input-inner: #FF8C00;
+  --color-input-wheel: #FFE4B5;
+  --color-input-optional: #F0F0F0;
+  --color-label-old: #CC0000;
+  --color-label-new: #006600;
+}
+
+/* Dark mode overrides */
+.dark {
+  --color-page-bg: #111827;
+  --color-nav-bg: #030712;
+  --color-nav-link: #d4a017;
+  --color-text: #d1d5db;
+  --color-text-dark: #e5e7eb;
+  --color-link: #d4a017;
+  --color-link-hover: #f59e0b;
+  --color-calc-bg: #1f2937;
+  --color-calc-border: #374151;
+  --color-calc-heading: #374151;
+  --color-table-border: #374151;
+  --color-btn-border: #4b5563;
+  --color-input-outer: #FCD116;
+  --color-input-inner: #FF8C00;
+  --color-input-wheel: #FFE4B5;
+  --color-input-optional: #F0F0F0;
+  --color-label-old: #f87171;
+  --color-label-new: #4ade80;
 }
 
 /* Button component — preserves original gradient style */
@@ -49,6 +75,23 @@
     background: linear-gradient(to bottom, #E6E6E6, gainsboro);
   }
 
+  /* Dark mode buttons */
+  .dark .button {
+    background: linear-gradient(to bottom, #4b5563, #374151);
+    color: #d1d5db;
+    text-shadow: none;
+    border-color: #4b5563;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4), inset 0 0 3px rgba(255,255,255,0.05);
+  }
+  .dark .button:hover, .dark .button:focus {
+    background: linear-gradient(to bottom, #6b7280, #4b5563);
+    border-color: #6b7280;
+  }
+  .dark .button:active {
+    background: linear-gradient(to bottom, #374151, #1f2937);
+    box-shadow: inset 0 1px 2px #111;
+  }
+
   /* Mobile: larger touch targets for buttons */
   @media (max-width: 1023px) {
     .button {
@@ -76,6 +119,10 @@
     @apply ml-auto w-16 px-2 py-1 text-right rounded
            border border-gray-300 shadow-inner text-sm md:py-0.5;
   }
+  .dark .calc-input {
+    border-color: #4b5563;
+    color: #333;
+  }
   .calc-unit {
     @apply text-xs text-gray-500;
   }
@@ -83,10 +130,10 @@
     @apply font-bold whitespace-nowrap;
   }
   .calc-label-old {
-    @apply font-bold whitespace-nowrap text-[#C00];
+    @apply font-bold whitespace-nowrap text-[var(--color-label-old)];
   }
   .calc-label-new {
-    @apply font-bold whitespace-nowrap text-[#060];
+    @apply font-bold whitespace-nowrap text-[var(--color-label-new)];
   }
   .calc-controls {
     @apply text-center py-4;
@@ -128,13 +175,20 @@
     @apply hidden md:flex md:gap-4 md:items-center
            absolute md:static top-10 left-0 w-full md:w-auto
            bg-[var(--color-nav-bg)] md:bg-transparent
-           flex-col md:flex-row font-bold text-sm;
+           flex-col md:flex-row font-bold text-sm ml-auto;
   }
   .site-nav-link {
     @apply block px-4 py-3 md:py-0 text-[var(--color-nav-link)] hover:underline;
   }
   .nav-overlay {
     @apply fixed inset-0 z-40 md:hidden;
+  }
+
+  /* Dark mode toggle */
+  .theme-toggle {
+    @apply text-sm p-1 leading-none cursor-pointer ml-auto md:ml-4;
+    background: none;
+    border: none;
   }
 
   /* Mobile tabs */
@@ -144,6 +198,9 @@
   .tab-btn {
     @apply flex-1 py-2.5 px-2 text-sm font-bold text-center
            min-h-[44px] border-b-2 border-transparent text-gray-400;
+  }
+  .dark .tab-btn {
+    color: #6b7280;
   }
   .tab-btn-active {
     @apply border-[var(--color-nav-link)] text-[var(--color-text-dark)];
