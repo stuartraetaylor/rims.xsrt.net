@@ -324,7 +324,7 @@ function OffsetCalculator() {
   function(element) {
     var numeric = new RegExp("^[\+\-]?[0-9]+(\\.[0-9]*)?$");
 
-    element.value = $j.trim(element.value);
+    element.value = element.value.trim();
     if (element.value.length == 0)
       element.value = "0";
 
