@@ -3,8 +3,18 @@ layout: base.njk
 title: Split Rim Offset Calculator
 navActive: offset
 ---
+<!-- Mobile tab bar -->
+<div class="mobile-tabs flex lg:hidden border-b border-[--color-calc-border] mb-4">
+  <button class="mobile-tab flex-1 py-2.5 px-2 text-sm font-bold text-center min-h-[44px] border-b-2 border-[--color-nav-link] text-[--color-text-dark]" data-tab="tab-calculator">Calculator</button>
+  <button class="mobile-tab flex-1 py-2.5 px-2 text-sm font-bold text-center min-h-[44px] border-b-2 border-transparent text-gray-400" data-tab="tab-results">Results</button>
+  <button class="mobile-tab flex-1 py-2.5 px-2 text-sm font-bold text-center min-h-[44px] border-b-2 border-transparent text-gray-400" data-tab="tab-about">About</button>
+</div>
+
 <div class="flex flex-col lg:flex-row gap-6">
 <div class="lg:flex-shrink-0">
+
+<!-- Tab: Calculator -->
+<div class="tab-panel" id="tab-calculator">
 <div id="offset-calculator" class="bg-[--color-calc-bg] border-2 border-[--color-calc-border] p-4 rounded-lg shadow-sm mb-6 w-full max-w-[620px]">
 <h3 class="text-base font-bold bg-[--color-calc-heading] text-[--color-text-dark] px-2 py-1 -mx-4 -mt-4 mb-4 rounded-t-md">Wheel Details (3-piece wheel / split rim)</h3>
 <form onsubmit="calculator.calculate(this); return false;" onreset="calculator.clearall();">
@@ -50,8 +60,12 @@ navActive: offset
   <input type="reset" class="button" value="Reset" />
 </div>
 </form>
+</div>
+</div>
 
-<table id="offset-calculator-result" class="results w-full text-sm border border-[--color-table-border]">
+<!-- Tab: Results -->
+<div class="tab-panel hidden lg:block" id="tab-results">
+<table id="offset-calculator-result" class="results w-full text-sm border border-[--color-table-border] mb-4">
 <tr><th></th><th>Original</th><th>New</th></tr>
 <tr><th>Wheel Width <span class="text-xs font-normal">(<abbr title="inches">in.</abbr>)</span></th>
 <td id="old-width">-</td><td id="new-width">-</td></tr>
@@ -68,8 +82,11 @@ navActive: offset
 <div id="comparison" class="results"></div>
 <div id="resource-links" class="results text-right text-xs"></div>
 </div>
+
 </div>
 
+<!-- Tab: About -->
+<div class="tab-panel hidden lg:block" id="tab-about">
 <div id="description" class="lg:flex-1 min-w-0 text-[--color-text-dark] text-base leading-relaxed">
 <h2 class="text-lg font-bold mb-3">About the Split Rim Offset Calculator</h2>
 <p><img src="/images/split-rim.jpg" width="300" alt="Split Rim (3-piece wheel)" class="rounded shadow-md mb-4" /></p>
@@ -82,5 +99,6 @@ navActive: offset
   <li><a href="javascript:calculator.demo('split-rim', 2);" class="text-[--color-link] hover:text-[--color-link-hover] underline">Changing both inner and outer sections of a 10J et45 wheel.</a></li>
 </ul>
 <p class="text-xs text-gray-500">* Note that you do not have to fill in all the fields for the calculator to give you a result.</p>
+</div>
 </div>
 </div>

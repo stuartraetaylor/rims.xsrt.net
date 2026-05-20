@@ -58,10 +58,10 @@
 </main>
 
 <script>
+// Hamburger menu toggle
 document.getElementById('nav-toggle').addEventListener('click', function() {
   var menu = document.getElementById('nav-menu');
-  var isOpen = menu.classList.toggle('hidden');
-  // toggle: if hidden was added, it's closed; if removed, it's open
+  menu.classList.toggle('hidden');
   if (menu.classList.contains('hidden')) {
     this.setAttribute('aria-expanded', 'false');
   } else {
@@ -69,6 +69,55 @@ document.getElementById('nav-toggle').addEventListener('click', function() {
     this.setAttribute('aria-expanded', 'true');
   }
 });
+
+// Mobile tab switching
+(function() {
+  var tabs = document.querySelectorAll('.mobile-tab');
+  var panels = document.querySelectorAll('.tab-panel');
+  if (!tabs.length) return;
+
+  function switchTab(targetId) {
+    tabs.forEach(function(t) {
+      var isActive = t.getAttribute('data-tab') === targetId;
+      t.classList.toggle('border-[--color-nav-link]', isActive);
+      t.classList.toggle('text-[--color-text-dark]', isActive);
+      t.classList.toggle('border-transparent', !isActive);
+      t.classList.toggle('text-gray-400', !isActive);
+    });
+    panels.forEach(function(p) {
+      if (window.innerWidth < 1024) {
+        p.classList.toggle('hidden', p.id !== targetId);
+        p.classList.toggle('block', p.id === targetId);
+      }
+    });
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      switchTab(this.getAttribute('data-tab'));
+    });
+  });
+
+  // Auto-switch to Results tab on form submit (mobile only)
+  var form = document.querySelector('#offset-calculator form');
+  if (form) {
+    form.addEventListener('submit', function() {
+      if (window.innerWidth < 1024) {
+        setTimeout(function() { switchTab('tab-results'); }, 100);
+      }
+    });
+  }
+
+  // On resize to desktop, show all panels
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 1024) {
+      panels.forEach(function(p) {
+        p.classList.remove('hidden');
+        p.classList.add('block');
+      });
+    }
+  });
+})();
 </script>
 
 </body>
