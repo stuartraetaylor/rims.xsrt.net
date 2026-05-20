@@ -164,13 +164,19 @@ class OffsetCalculator {
   }
 
   displayResults(oldWidth, oldOffset, newWidth, newOffset, overallOffset, archDiff, strutDiff) {
+    const roundedNewWidth = this.core.round(newWidth, 2);
+    const roundedNewOffset = this.core.round(newOffset);
+    const roundedOverallOffset = this.core.round(overallOffset);
+    const roundedArchDiff = this.core.round(archDiff);
+    const roundedStrutDiff = this.core.round(strutDiff);
+
     $j('#old-width').html(oldWidth);
     $j('#old-offset').html(oldOffset);
-    $j('#new-width').html(newWidth);
-    $j('#new-offset').html(newOffset);
-    $j('#overall-offset').html(overallOffset);
-    $j('#arch-diff').html(this.core.formatDiff(archDiff));
-    $j('#strut-diff').html(this.core.formatDiff(strutDiff));
+    $j('#new-width').html(roundedNewWidth);
+    $j('#new-offset').html(roundedNewOffset);
+    $j('#overall-offset').html(roundedOverallOffset);
+    $j('#arch-diff').html(this.core.formatDiff(roundedArchDiff));
+    $j('#strut-diff').html(this.core.formatDiff(roundedStrutDiff));
   }
 
   displayLinks(oldWidth, oldOffset, newWidth, newOffset, diameter) {
