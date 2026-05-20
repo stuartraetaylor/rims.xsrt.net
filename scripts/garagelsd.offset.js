@@ -267,7 +267,7 @@ function OffsetCalculator() {
   function(selector) { $j(selector).fadeTo('fast', 1.0); });
 
   register(this, "scrollTo",
-  function(selector) { $j.scrollTo($j(selector), 500); });
+  function(selector) { document.querySelector(selector).scrollIntoView({ behavior: 'smooth' }); });
 
   register(this, "clearResults",
   function() {
