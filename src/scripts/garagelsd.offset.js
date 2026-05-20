@@ -63,6 +63,12 @@ class OffsetCalculator {
     this.showResults();
     this.storeResults(oldWidth, oldOffset, result.newWidth, result.overallOffset);
 
+    this.updateHash({
+      oi: form.oldInner.value, oo: form.oldOuter.value,
+      ni: form.newInner.value, no: form.newOuter.value,
+      w: form.wheelWidth.value, o: form.offset.value, s: form.spacers.value
+    });
+
     if (oldWidth > 0) {
       this.displayLinks(oldWidth, oldOffset, result.newWidth, result.overallOffset, 0);
     } else {
@@ -85,6 +91,11 @@ class OffsetCalculator {
     this.displayComparison(width, overallOffset, diameter);
     this.showResults();
     this.storeResults(width, overallOffset);
+
+    this.updateHash({
+      w: form.wheelWidth.value, o: form.offset.value,
+      d: form.diameter.value, s: form.spacers.value
+    });
   }
 
   calculateFitment(form) {
@@ -108,6 +119,12 @@ class OffsetCalculator {
     this.displayComparison(newWidth, result.overallOffset, diameter);
     this.showResults();
     this.storeResults(oldWidth, oldOffset, newWidth, result.overallOffset);
+
+    this.updateHash({
+      w: form.wheelWidth.value, o: form.offset.value,
+      nw: form.newWheelWidth.value, no: form.newOffset.value,
+      d: form.diameter.value, s: form.spacers.value
+    });
 
     if (oldWidth > 0) {
       this.displayLinks(oldWidth, oldOffset, newWidth, result.overallOffset, diameter);
@@ -242,6 +259,7 @@ class OffsetCalculator {
     this.clearResults();
     this.clearComparison();
     this.clearLinks();
+    this.clearHash();
     this.results = null;
   }
 
@@ -266,6 +284,47 @@ class OffsetCalculator {
 
   clearComparison() { this.displayComparison(0, 0, 0); }
   clearLinks() { this.clear('#resource-links'); }
+
+  updateHash(values) {
+    history.replaceState(null, '', '#' + this.core.toHash(values));
+  }
+
+  clearHash() {
+    history.replaceState(null, '', window.location.pathname);
+  }
+
+  loadFromHash() {
+    const params = this.core.fromHash(window.location.hash);
+    if (Object.keys(params).length === 0) return;
+
+    const path = window.location.pathname;
+    let idMap, calcFn;
+
+    if (path.includes('/offset')) {
+      idMap = { oi: 'oldInner', oo: 'oldOuter', ni: 'newInner', no: 'newOuter', w: 'wheelWidth', o: 'offset', s: 'spacers' };
+      calcFn = () => this.calculate($j('#offset-calculator form')[0]);
+    } else if (path.includes('/fitment')) {
+      idMap = { w: 'wheelWidth', o: 'offset', nw: 'newWheelWidth', no: 'newOffset', d: 'diameter', s: 'spacers' };
+      calcFn = () => this.calculateFitment($j('#offset-calculator form')[0]);
+    } else if (path.includes('/equivalents')) {
+      idMap = { w: 'wheelWidth', o: 'offset', d: 'diameter', s: 'spacers' };
+      calcFn = () => this.calculateEquivalents($j('#offset-calculator form')[0]);
+    } else {
+      return;
+    }
+
+    // Populate fields using jQuery .val() (same as demo)
+    $j('#offset-calculator form').reset();
+    let hasValues = false;
+    for (const key in idMap) {
+      if (params[key]) {
+        $j('#' + idMap[key]).val(params[key]);
+        hasValues = true;
+      }
+    }
+
+    if (hasValues) calcFn();
+  }
 
   demo(type, n) {
     $j('#offset-calculator form').reset();
@@ -300,4 +359,8 @@ class OffsetCalculator {
 }
 
 const calculator = new OffsetCalculator();
-$j(document).ready(() => calculator.clearAllNoFade());
+$j(document).ready(() => {
+  calculator.clearAllNoFade();
+  calculator.loadFromHash();
+});
+window.addEventListener('hashchange', () => calculator.loadFromHash());

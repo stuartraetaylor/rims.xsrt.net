@@ -177,6 +177,43 @@
       "&sort=1";
   };
 
+  /**
+   * Serialize form values to a URL hash string.
+   * @param {object} values - Key-value pairs of form field values
+   * @returns {string} Hash string (without leading #)
+   */
+  core.toHash = function(values) {
+    var parts = [];
+    for (var key in values) {
+      if (values.hasOwnProperty(key)) {
+        var val = values[key];
+        if (val !== '' && val !== '0' && val !== 0) {
+          parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(val));
+        }
+      }
+    }
+    return parts.join('&');
+  };
+
+  /**
+   * Parse a URL hash string into an object.
+   * @param {string} hash - Hash string (with or without leading #)
+   * @returns {object} Parsed key-value pairs
+   */
+  core.fromHash = function(hash) {
+    if (!hash || hash.length < 2) return {};
+    if (hash.charAt(0) === '#') hash = hash.substring(1);
+    var result = {};
+    var pairs = hash.split('&');
+    for (var i = 0; i < pairs.length; i++) {
+      var kv = pairs[i].split('=');
+      if (kv.length === 2) {
+        result[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
+      }
+    }
+    return result;
+  };
+
   // Universal module export (browser global + Node.js)
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = core;
