@@ -2,7 +2,7 @@
 #offset-calculator th { text-align: left; }
 
 #comparison tr th,
-#offset-calculator-result tr th { color: #333; }
+#offset-calculator-result tr th { color: var(--color-text-dark); }
 
 #comparison tr td,
 #offset-calculator-result tr td {
@@ -16,6 +16,10 @@
 #offset-calculator-result .unit {
   color: #666;
   font-weight: normal;
+}
+.dark #comparison .unit,
+.dark #offset-calculator-result .unit {
+  color: #9ca3af;
 }
 
 #offset-calculator-result tr td {
@@ -31,7 +35,7 @@
 
 #offset-calculator-result { border: none; }
 #offset-calculator-result tr th { padding: 4px 12px; }
-#offset-calculator-result tr td { border-top: 1px solid #e7e7e7; }
+#offset-calculator-result tr td { border-top: 1px solid var(--color-table-border); }
 
 #comparison { margin-top: 16px; min-height: 40px; }
 #resource-links .link { display: block; }
