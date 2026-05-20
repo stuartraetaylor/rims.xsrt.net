@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,25 +13,63 @@
 
 <link rel="stylesheet" type="text/css" media="all" href="/style/main.css" />
 <link rel="stylesheet" type="text/css" media="all" href="/scripts/style.offset.css" />
-
-<style type="text/css">
-  {% if navActive %}#nav-{{ navActive }} a:link { text-decoration: underline; }{% endif %}
-</style>
 </head>
 
-<body>
-<div id="navigation">
-  <ul class="container clearfix">
-    <li id="nav-equivalents"><a href="/tools/equivalents">Equivalent Arch Clearance Calculator</a></li>
-    <li id="nav-fitment"><a href="/tools/fitment">Wheel Fitment Comparison Calculator</a></li>
-    <li id="nav-offset"><a href="/tools/offset">Split Rim Offset Calculator</a></li>
-  </ul>
-</div>
+<body class="bg-[--color-page-bg] text-[--color-text] font-sans text-sm leading-relaxed">
 
-<div id="content" class="entry-content container">
-  <h1>{{ title }}</h1>
-{{ content | safe }}
-</div>
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-[--color-nav-bg] z-50">
+  <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-10">
+    <span class="text-[--color-nav-link] font-bold text-sm hidden md:block">RIMS</span>
+    <!-- Hamburger (mobile) -->
+    <button id="nav-toggle" class="md:hidden text-[--color-nav-link] text-2xl leading-none p-1"
+            aria-label="Menu" aria-expanded="false">&#9776;</button>
+    <!-- Nav links -->
+    <ul id="nav-menu" class="
+      hidden md:flex md:gap-4 md:items-center
+      absolute md:static top-10 left-0 w-full md:w-auto
+      bg-[--color-nav-bg] md:bg-transparent
+      flex-col md:flex-row
+      font-bold text-sm
+    ">
+      <li id="nav-offset">
+        <a href="/tools/offset" class="block px-4 py-3 md:py-0 text-[--color-nav-link] hover:underline {% if navActive == 'offset' %}underline{% endif %}">
+          Split Rim Offset
+        </a>
+      </li>
+      <li id="nav-fitment">
+        <a href="/tools/fitment" class="block px-4 py-3 md:py-0 text-[--color-nav-link] hover:underline {% if navActive == 'fitment' %}underline{% endif %}">
+          Wheel Fitment
+        </a>
+      </li>
+      <li id="nav-equivalents">
+        <a href="/tools/equivalents" class="block px-4 py-3 md:py-0 text-[--color-nav-link] hover:underline {% if navActive == 'equivalents' %}underline{% endif %}">
+          Equivalent Arch Clearance
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main content -->
+<main id="content" class="entry-content max-w-6xl mx-auto px-4 pt-14 md:pt-16">
+  <h1 class="sr-only">{{ title }}</h1>
+  {{ content | safe }}
+</main>
+
+<script>
+document.getElementById('nav-toggle').addEventListener('click', function() {
+  var menu = document.getElementById('nav-menu');
+  var isOpen = menu.classList.toggle('hidden');
+  // toggle: if hidden was added, it's closed; if removed, it's open
+  if (menu.classList.contains('hidden')) {
+    this.setAttribute('aria-expanded', 'false');
+  } else {
+    menu.classList.add('flex');
+    this.setAttribute('aria-expanded', 'true');
+  }
+});
+</script>
 
 </body>
 </html>
