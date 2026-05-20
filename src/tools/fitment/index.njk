@@ -3,6 +3,8 @@ layout: base.njk
 title: Wheel Fitment Comparison Calculator
 navActive: fitment
 ---
+<div class="flex flex-col lg:flex-row gap-6">
+<div class="lg:flex-shrink-0">
 <div id="offset-calculator" class="bg-[--color-calc-bg] border-2 border-[--color-calc-border] p-4 rounded-lg shadow-sm mb-6 w-full max-w-[620px]">
 <h3 class="text-base font-bold bg-[--color-calc-heading] text-[--color-text-dark] px-2 py-1 -mx-4 -mt-4 mb-4 rounded-t-md">Wheel Details (old vs. new)</h3>
 <form onsubmit="calculator.calculateFitment(this); return false;" onreset="calculator.clearall();">
@@ -61,12 +63,14 @@ navActive: fitment
 <div id="comparison" class="results"></div>
 <div id="resource-links" class="results text-right text-xs"></div>
 </div>
+</div>
 
-<div id="description" class="text-[--color-text-dark] text-base leading-relaxed">
+<div id="description" class="lg:flex-1 min-w-0 text-[--color-text-dark] text-base leading-relaxed">
 <h2 class="text-lg font-bold mb-3">About the Wheel Fitment Calculator</h2>
 <p><img src="/images/wheel.jpg" width="300" alt="Wheel Calculator" class="rounded shadow-md mb-4" /></p>
 <p class="mb-4">The wheel fitment calculator allows you to compare the arch and strut clearance of two different wheels.</p>
 <p class="mb-4">The calculator also provides a comparison of the new wheel against other wheel sizes with the same arch clearance.</p>
 <p class="mb-4">For example, you can see that a 9.5J et12 wheel has 37mm less arch clearance than an 8J et30 wheel; which is equivalent to having an 8J et-7 or 11J et31 wheel.</p>
 <p><a href="javascript:calculator.demo('wheel-fitment', 0);" class="text-[--color-link] hover:text-[--color-link-hover] underline">Click for a demo!</a></p>
+</div>
 </div>
