@@ -6,6 +6,10 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy("src/scripts");
+  // Copy jQuery from node_modules to scripts/jquery/
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/jquery/dist/jquery.min.js": "scripts/jquery/jquery.min.js"
+  });
   // style/main.css is built by Tailwind CLI, not passthrough copied
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/CNAME");
