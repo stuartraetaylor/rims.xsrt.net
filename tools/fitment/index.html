@@ -11,18 +11,6 @@
 <script type="text/javascript" src="/scripts/common.js?ver=1.2.1"></script>
 <script type="text/javascript" src="/scripts/garagelsd.offset.js?ver=2.1.6"></script>
 
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-37651946-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
 <link rel="stylesheet" type="text/css" media="all" href="/style/style.css" />
 <link rel="stylesheet" type="text/css" media="all" href="/style/garagelsd-style.css" />
 <link rel="stylesheet" type="text/css" media="all" href="/scripts/style.offset.css" />
@@ -46,7 +34,7 @@
   <h1>Wheel Fitment Comparison Calculator</h1>
 <div id="offset-calculator" class="alignleft">
 <h3>Wheel Details (old vs. new)</h3>
-<form onsubmit="calculator.calculateFitment(this); trackEvent('Wheel Tools', 'wheel-fitment', calculator.results); return false;" onreset="calculator.clearall();">
+<form onsubmit="calculator.calculateFitment(this); return false;" onreset="calculator.clearall();">
 <div class="field-group">
 <div class="field">
   <label for="wheelWidth" style="color: #C00;">Old wheel <em>width</em></label> 

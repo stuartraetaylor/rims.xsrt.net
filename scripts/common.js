@@ -12,13 +12,4 @@ function register(object, name, fn) {
   };
 }
 
-function trackEvent(category, action, label) {
-  if (typeof _gaq != 'undefined' && label != null)
-    _gaq.push(['_trackEvent', category, action, label]);
-}
-
-function trackAction(category, action) {
-  if (typeof _gaq != 'undefined')
-    _gaq.push(['_trackEvent', category, action]);
-}
 
