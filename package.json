@@ -29,5 +29,8 @@
     "concurrently": "^9.2.1",
     "jest": "^30.4.2",
     "tailwindcss": "^4.3.0"
+  },
+  "dependencies": {
+    "jquery": "^4.0.0"
   }
 }
