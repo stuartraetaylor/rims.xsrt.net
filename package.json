@@ -6,7 +6,8 @@
   "scripts": {
     "build": "eleventy && tailwindcss -i src/style/main.css -o _site/style/main.css --minify",
     "build:css": "tailwindcss -i src/style/main.css -o _site/style/main.css",
-    "dev": "npx concurrently \"eleventy --serve\" \"tailwindcss -i src/style/main.css -o _site/style/main.css --watch\""
+    "dev": "npx concurrently \"eleventy --serve\" \"tailwindcss -i src/style/main.css -o _site/style/main.css --watch\"",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "@11ty/eleventy": "^3.1.5",
     "@tailwindcss/cli": "^4.3.0",
     "concurrently": "^9.2.1",
+    "jest": "^30.4.2",
     "tailwindcss": "^4.3.0"
   }
 }
