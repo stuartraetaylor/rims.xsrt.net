@@ -7,6 +7,7 @@ on:
     branches: [main]
   schedule:
     - cron: '0 3 * * 1'  # Every Monday at 03:00 UTC
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -29,13 +30,12 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-      - if: github.event_name == 'push'
-        uses: actions/upload-pages-artifact@v5
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
   deploy:
-    if: github.event_name == 'push' || github.event_name == 'schedule'
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
