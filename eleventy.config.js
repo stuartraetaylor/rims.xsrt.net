@@ -1,3 +1,5 @@
+const { execSync } = require("child_process");
+
 module.exports = function(eleventyConfig) {
   // Cache busting: append build timestamp to asset URLs
   const buildVersion = Date.now().toString(36);
@@ -5,15 +7,21 @@ module.exports = function(eleventyConfig) {
     return url + "?v=" + buildVersion;
   });
 
-  eleventyConfig.addPassthroughCopy("src/scripts");
-  // Copy jQuery from node_modules to scripts/jquery/
+  eleventyConfig.addFilter("gitLastModified", function(filePath) {
+    let date;
+    try {
+      date = execSync(`git log -1 --format=%cI -- "${filePath}"`, { encoding: "utf-8" }).trim();
+    } catch { /* Command failed, ignore. */ }
+
+    return date || new Date().toISOString();
+  });
+
   eleventyConfig.addPassthroughCopy({
     "node_modules/jquery/dist/jquery.min.js": "scripts/jquery/jquery.min.js"
   });
-  // style/main.css is built by Tailwind CLI, not passthrough copied
+  eleventyConfig.addPassthroughCopy("src/scripts");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/CNAME");
-  eleventyConfig.addPassthroughCopy("src/sitemap.xml");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
 
   return {

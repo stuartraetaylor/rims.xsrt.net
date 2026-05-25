@@ -1,3 +1,7 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -5,15 +9,15 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://rims.xsrt.net/</loc>
-  </url>
-  <url>
     <loc>https://rims.xsrt.net/tools/offset/</loc>
+    <lastmod>{{ "src/tools/offset/index.njk" | gitLastModified }}</lastmod>
   </url>
   <url>
     <loc>https://rims.xsrt.net/tools/fitment/</loc>
+    <lastmod>{{ "src/tools/fitment/index.njk" | gitLastModified }}</lastmod>
   </url>
   <url>
     <loc>https://rims.xsrt.net/tools/equivalents/</loc>
+    <lastmod>{{ "src/tools/equivalents/index.njk" | gitLastModified }}</lastmod>
   </url>
 </urlset>
